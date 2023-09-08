@@ -89,6 +89,9 @@ public class Alumno {
         this.estadoAlumno = estadoAlumno;
     }
 
+    // SOBREESCRITURA METODO TOSTRING
+    
+    
     @Override
     public String toString() {
         return "Alumno: " + "id Alumno: " + idAlumno + "\nNombre: " + nombre + "\nApellido: " + apellido + "\nDNI: " + dni + "\nFecha Nacimiento: " + fechaNacimiento + "\n Estado Alumno: " + estadoAlumno +"\n------------------------";
