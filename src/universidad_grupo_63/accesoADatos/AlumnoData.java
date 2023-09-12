@@ -103,18 +103,24 @@ public class AlumnoData {
     
     // CAMBIO ESTADO ALUMNO (ACTIVARLO/DESACTIVARLO)
     
-    public void cambiarEstadoAlumno (int id) {
+    public void cambiarEstadoAlumno (Alumno alumno) {
+        
+        int id = alumno.getIdAlumno();
       
         String sql = "UPDATE alumno SET estado=? WHERE idAlumno=?";
         
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setBoolean(1, false);
+            ps.setBoolean(1, !alumno.isEstadoAlumno());
             //ps.setInt(1,id);
             int exito = ps.executeUpdate();
             
             if (exito==1) {
-                JOptionPane.showMessageDialog(null,"Alumno cambiado de estado");
+                if(alumno.isEstadoAlumno()){
+                    JOptionPane.showMessageDialog(null,"Alumno Activado");
+                }else{
+                    JOptionPane.showMessageDialog(null,"Alumno Desactivado");
+                }
            
             } 
             

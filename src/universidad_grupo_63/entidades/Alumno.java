@@ -88,6 +88,7 @@ public class Alumno {
     public void setEstadoAlumno(boolean estadoAlumno) {
         this.estadoAlumno = estadoAlumno;
     }
+    
 
     // SOBREESCRITURA METODO TOSTRING
     
