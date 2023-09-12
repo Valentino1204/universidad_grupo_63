@@ -112,7 +112,7 @@ public class AlumnoData {
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setBoolean(1, !alumno.isEstadoAlumno());
-            //ps.setInt(1,id);
+            ps.setInt(2,id);
             int exito = ps.executeUpdate();
             
             if (exito==1) {
