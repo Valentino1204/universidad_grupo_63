@@ -1,10 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package universidad_grupo_63.accesoADatos;
 
-//import org.mariadb.jdbc.Connection;
+// import org.mariadb.jdbc.Connection;
 // import java.sql.*; CON EL ASTERISCO IMPORTA EL PAQUETE COMPLETO DE SQL
 import java.sql.*;
 import java.util.logging.Level;
@@ -13,14 +10,12 @@ import javax.swing.JOptionPane;
 
 
 
-/**
- *
- * @author valentinobulgarelli
- */
+
 public class Conexion {
     
     // LOCALIZACIÓN DE LA BASE DE DATOS
     // localhost QUIERE DECIR QUE ESTÁ DE MANERA LOCAL EN MI COMPUTADORA
+    // final SE USA PARA CONSTANTES
     private static final String URL="jdbc:mariadb://localhost/";
     // NOMBRE DE BASE DE DATOS
     private static final String DB="universidad_grupo_63";
@@ -57,10 +52,10 @@ public class Conexion {
                 JOptionPane.showMessageDialog(null, "Conectado con éxito");
                 
             } catch (ClassNotFoundException ex) {
-                //Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+                
                 JOptionPane.showMessageDialog(null, "Error al cargar los drivers");
             } catch (SQLException ex) {
-                //Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+                
                 JOptionPane.showMessageDialog(null, "Error al conectarse a la base de datos");
             }
         }
