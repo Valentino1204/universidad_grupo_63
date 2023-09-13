@@ -105,21 +105,22 @@ public class AlumnoData {
     
     public void cambiarEstadoAlumno (Alumno alumno) {
         
-        int id = alumno.getIdAlumno();
+        int id = alumno.getIdAlumno(); //AL OBJETO ALUMNO LE EXTRAES IdAlumno Y LO GUARDAS EN LA VARIABLE id
       
-        String sql = "UPDATE alumno SET estado=? WHERE idAlumno=?";
+        String sql = "UPDATE alumno SET estadoAlumno=? WHERE idAlumno=?"; // SETEAS EL ESTADO PARA EL IdAlumno SELECCIONADO
         
         try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setBoolean(1, !alumno.isEstadoAlumno());
-            ps.setInt(2,id);
-            int exito = ps.executeUpdate();
+            PreparedStatement ps = con.prepareStatement(sql); // MEDIANTE LA CONEXIÓN MANDA LA SENTENCIA A SQL
+            ps.setBoolean(1, !alumno.isEstadoAlumno()); // EN EL ÍNDICE SELECCIONADO GUARDAS EL OPUESTO AL ESTADO ACTUAL
+            // SE GUARDA EL ESTADO EN EL PRIMER SIGNO DE PREG
+            ps.setInt(2,id); // SE GUARDA EL ID EN EL SIGUIENTE SIGNO DE PREG DE LA LÍNEA String sql
+            int exito = ps.executeUpdate(); 
             
             if (exito==1) {
                 if(alumno.isEstadoAlumno()){
-                    JOptionPane.showMessageDialog(null,"Alumno Activado");
-                }else{
                     JOptionPane.showMessageDialog(null,"Alumno Desactivado");
+                }else{
+                    JOptionPane.showMessageDialog(null,"Alumno Activado");
                 }
            
             } 
@@ -129,4 +130,82 @@ public class AlumnoData {
         }
         
     }
+    
+    // BUSCAR ALUMNO POR ID
+    
+    public Alumno buscarAlumno(int id) {
+        
+        String sql = "SELECT nombre, apellido, dni, fechaNacimiento FROM alumno WHERE idAlumno = ? AND estadoAlumno=1 ";
+      
+        Alumno alumno = null; // CREA LA VARIABLE DE TIPO ALUMNO VACÍA
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setInt(1, id); // REEMPLAZA EL SIGNO DE PREGUNTA POR EL id
+            
+            ResultSet resultado = ps.executeQuery();
+            
+            if (resultado.next()) { // AL if ENTRA CUANDO HAY UN ALUMNO CON ESE idAlumno
+                
+                alumno = new Alumno(); // CONSTRUCTOR VACÍO
+                
+                alumno.setIdAlumno(id); // ESTE ATRIBUTO YA LO PASASTE POR PARÁMETRO AL MÉTODO
+                alumno.setEstadoAlumno(true);
+                // SE EXTRAEN DE LA CONSULTA executeQuery LOS VALORES DE LAS COLUMNAS QUE SE GUARDAN EN LA VARIBLE resultado POR SEPARADO
+                alumno.setNombre(resultado.getString("nombre")); 
+                alumno.setApellido(resultado.getString("apellido"));
+                alumno.setDni(resultado.getInt("dni")); // getInt TIPO DE DATO Y "dni" NOMBRE DE COLUMNA
+                alumno.setFechaNacimiento(resultado.getDate("fechaNacimiento").toLocalDate());// EN LA BASE DE DATOS LA COLUMNA ES DE TIPO Date Y LO CONVIERTE A LocalDate EN JAVA CON EL MÉTODO toLocalDate()
+                
+            } else {
+                JOptionPane.showMessageDialog(null,"No existe un alumno con ese id");
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+        }
+        return alumno;
+    }
+    
+    // BUSCAR ALUMNO POR DNI
+    
+     public Alumno buscarAlumnoPorDni(int dni) {
+        
+        String sql = "SELECT idAlumno, nombre, apellido, fechaNacimiento FROM alumno WHERE dni = ? AND estadoAlumno=1 ";
+      
+        Alumno alumno = null; // CREA LA VARIABLE DE TIPO ALUMNO VACÍA
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setInt(1, dni); // REEMPLAZA EL SIGNO DE PREGUNTA POR EL dni
+            
+            ResultSet resultado = ps.executeQuery();
+            
+            if (resultado.next()) { // AL if ENTRA CUANDO HAY UN ALUMNO CON ESE dni
+                
+                alumno = new Alumno(); // CONSTRUCTOR VACÍO
+                
+                alumno.setIdAlumno(resultado.getInt("idAlumno")); // ESTE ATRIBUTO YA LO PASASTE POR PARÁMETRO AL MÉTODO
+                alumno.setEstadoAlumno(true);
+                // SE EXTRAEN DE LA CONSULTA executeQuery LOS VALORES DE LAS COLUMNAS QUE SE GUARDAN EN LA VARIBLE resultado POR SEPARADO
+                alumno.setNombre(resultado.getString("nombre")); 
+                alumno.setApellido(resultado.getString("apellido"));
+                alumno.setDni(dni); // getInt TIPO DE DATO Y "dni" NOMBRE DE COLUMNA
+                alumno.setFechaNacimiento(resultado.getDate("fechaNacimiento").toLocalDate());// EN LA BASE DE DATOS LA COLUMNA ES DE TIPO Date Y LO CONVIERTE A LocalDate EN JAVA CON EL MÉTODO toLocalDate()
+                
+            } else {
+                JOptionPane.showMessageDialog(null,"No existe un alumno con ese dni");
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+        }
+        return alumno;
+    }
+    
+    
 }

@@ -42,7 +42,46 @@ public class UniversidadGrupo63 {
        
       */
 
+       /*
        
+       // CAMBIAR ESTADO ALUMNO
+       
+       Alumno alumno = new Alumno(1, "Carlos", "Ridao", 666666, LocalDate.of(1992, 9, 2), false);
+       
+       AlumnoData alu = new AlumnoData();
+       
+       alu.cambiarEstadoAlumno(alumno);
+       
+       */
+       
+       // BUSCAR ALUMNO POR ID
+       
+       /*
+        AlumnoData alu = new AlumnoData();
+        
+        int id = 8;
+        
+        if(alu.buscarAlumno(id)!=null) {
+            System.out.println(alu.buscarAlumno(id));
+       // } else {
+       //    System.out.println("No existe el alumno con ese id");
+        }
+        */
+       
+       
+        // BUSCAR ALUMNO POR DNI
+        
+        AlumnoData alu = new AlumnoData();
+        
+         int dni = 5;
+        
+        if(alu.buscarAlumnoPorDni(dni)!=null) {
+            System.out.println(alu.buscarAlumnoPorDni(dni));
+        }
+        
+       
+        
+        
     }
     
 }
