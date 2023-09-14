@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 import universidad_grupo_63.accesoADatos.AlumnoData;
 import universidad_grupo_63.accesoADatos.Conexion;
+import universidad_grupo_63.accesoADatos.MateriaData;
 import universidad_grupo_63.entidades.Alumno;
+import universidad_grupo_63.entidades.Materia;
 
 
 public class UniversidadGrupo63 {
@@ -20,6 +22,8 @@ public class UniversidadGrupo63 {
        // PONÉS EN EL TECLADO SHIFT + F6 Y NO TENDRÍA QUE DAR ERROR
        
        AlumnoData alu = new AlumnoData();
+       
+       MateriaData mat = new MateriaData();
        
        //-------------------------------------------------------------
        
@@ -89,12 +93,32 @@ public class UniversidadGrupo63 {
         
         // LISTAR ALUMNOS
         
+        /*
                 
         for (Alumno alumno: alu.listarAlumnos() ) { // TIPO DE DATO + NOMBRE VARIABLE + MÉTODO alu.listarAlumnos() 
             System.out.println(alumno); // alumno DEL RENGLÓN ANTERIOR ES DECIR DEL for (Alumno alumno
         }
-       
+        
+        */
+
         //-------------------------------------------------------------
+        
+        // AGREGAR MATERIA
+        /*
+        Materia materia = new Materia("Física", 1, true);
+        
+        mat.guardarMateria(materia);
+        */
+        //-------------------------------------------------------------
+        
+       // MÉTODO MODIFICAR MATERIA
+       
+       Materia materia = new Materia (1, "Física", 1, true);
+       
+       mat.modificarMateria(materia);
+        
+        
+        
         
     }
     
