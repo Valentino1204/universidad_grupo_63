@@ -7,6 +7,8 @@ import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -207,9 +209,39 @@ public class AlumnoData {
         return alumno;
     }
     
-    
+    // LISTAR ALUMNOS
      
-     public void listarAlumnos(){
+     public ArrayList<Alumno> listarAlumnos(){ // NO DEVUELVE UN ÚNICO ALUMNO, DEVUELVE UNA LISTA DE ALUMNOS
          
+         String sql = "SELECT idAlumno, nombre, apellido, dni, fechaNacimiento FROM alumno WHERE estadoAlumno=1 ";
+         
+         ArrayList<Alumno> listaAlumnos = new ArrayList<>(); // INICIALIZACIÓN DE LA ArrayList
+         
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){ // EN CADA VUELTA DEL BUCLE SE CREA UN ALUMNO Y SE LE SETEAN LOS DATOS
+                Alumno alumno = new Alumno(); // CREACIÓN DE ALUMNO VACÍO PARA SETEARLE LOS SIGUIENTES VALORES
+                alumno.setIdAlumno(rs.getInt("idAlumno"));
+                alumno.setNombre(rs.getString("nombre"));
+                alumno.setApellido(rs.getString("apellido"));
+                alumno.setDni(rs.getInt("dni"));
+                alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
+                alumno.setEstadoAlumno(true);
+                
+                listaAlumnos.add(alumno); // PONE LOS ALUMNOS CON SUS DATOS EN UNA LISTA
+            }
+            
+            ps.close(); // CIERRA LA CONSULTA 
+            
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+        }
+         
+          return listaAlumnos;
      }
+     
 }

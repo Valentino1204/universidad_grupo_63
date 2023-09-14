@@ -3,6 +3,8 @@ package universidad_grupo_63_main;
 
 import java.sql.Connection;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import universidad_grupo_63.accesoADatos.AlumnoData;
 import universidad_grupo_63.accesoADatos.Conexion;
 import universidad_grupo_63.entidades.Alumno;
@@ -83,6 +85,16 @@ public class UniversidadGrupo63 {
         
         */
         
+        //-------------------------------------------------------------
+        
+        // LISTAR ALUMNOS
+        
+                
+        for (Alumno alumno: alu.listarAlumnos() ) { // TIPO DE DATO + NOMBRE VARIABLE + MÉTODO alu.listarAlumnos() 
+            System.out.println(alumno); // alumno DEL RENGLÓN ANTERIOR ES DECIR DEL for (Alumno alumno
+        }
+       
+        //-------------------------------------------------------------
         
     }
     
