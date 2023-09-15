@@ -10,25 +10,31 @@ package universidad_grupo_63.entidades;
  */
 public class Inscripcion {
     private int idInscripcion;
-    private double nota;
+    private float nota;
     private Alumno alumno;
     private Materia materia;
 
-    public Inscripcion(int idInscripcion, double nota, Alumno alumno, Materia materia) {
+    public Inscripcion() {
+    }
+
+    public Inscripcion(int idInscripcion, float nota, Alumno alumno, Materia materia) {
         this.idInscripcion = idInscripcion;
         this.nota = nota;
         this.alumno = alumno;
         this.materia = materia;
     }
 
-    public Inscripcion() {
-    }
-
-    public Inscripcion(double nota, Alumno alumno, Materia materia) {
+    public Inscripcion(float nota, Alumno alumno, Materia materia) {
         this.nota = nota;
         this.alumno = alumno;
         this.materia = materia;
     }
+
+    public Inscripcion(Alumno alumno, Materia materia) {
+        this.alumno = alumno;
+        this.materia = materia;
+    }
+    
 
     public int getIdInscripcion() {
         return idInscripcion;
@@ -38,11 +44,11 @@ public class Inscripcion {
         this.idInscripcion = idInscripcion;
     }
 
-    public double getNota() {
+    public float getNota() {
         return nota;
     }
 
-    public void setNota(double nota) {
+    public void setNota(float nota) {
         this.nota = nota;
     }
 
@@ -61,6 +67,8 @@ public class Inscripcion {
     public void setMateria(Materia materia) {
         this.materia = materia;
     }
+
+   
     
     
     

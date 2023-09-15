@@ -7,8 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import universidad_grupo_63.accesoADatos.AlumnoData;
 import universidad_grupo_63.accesoADatos.Conexion;
+import universidad_grupo_63.accesoADatos.InscripcionData;
 import universidad_grupo_63.accesoADatos.MateriaData;
 import universidad_grupo_63.entidades.Alumno;
+import universidad_grupo_63.entidades.Inscripcion;
 import universidad_grupo_63.entidades.Materia;
 
 
@@ -24,6 +26,8 @@ public class UniversidadGrupo63 {
        AlumnoData alu = new AlumnoData();
        
        MateriaData mat = new MateriaData();
+       
+       InscripcionData insc = new InscripcionData();
        
        //-------------------------------------------------------------
        
@@ -113,12 +117,76 @@ public class UniversidadGrupo63 {
         
        // MÉTODO MODIFICAR MATERIA
        
-       Materia materia = new Materia (1, "Física", 1, true);
+       /*
+       
+       Materia materia = new Materia (1, "Química", 1, true);
        
        mat.modificarMateria(materia);
         
+       */
+       
+       //-------------------------------------------------------------
+       
+       // MÉTODO CAMBIAR ESTADO MATERIA
+       
+       /*
+       
+       Materia materia = new Materia (1, "Química", 1, false);
         
+       mat.cambiarEstadoMateria(materia);
         
+       */
+       
+       //-------------------------------------------------------------
+       
+       // MÉTODO BUSCAR MATERIA
+       /*
+       int id = 1;
+        
+        if(mat.buscarMateria(id)!=null) {
+            System.out.println(mat.buscarMateria(id));
+        }
+        */
+        //-------------------------------------------------------------
+       
+        
+        // MÉTODO BUSCAR MATERIA POR NOMBRE
+        /*
+        String nombremat = "Matemática";
+        
+        if(mat.buscarMateriaNombre(nombremat)!=null) {
+            System.out.println(mat.buscarMateriaNombre(nombremat));
+        }
+        */
+        //-------------------------------------------------------------
+        
+        // MÉTODO BUSCAR MATERIA POR AÑO
+        /*
+        int aniomat = 1;
+        
+         if(mat.buscarMateriaAnio(aniomat)!=null) {
+            System.out.println(mat.buscarMateriaAnio(aniomat));
+        }
+        */
+        //-------------------------------------------------------------
+        
+        // MÉTODO LISTAR MATERIAS
+        /*
+        for(Materia materia : mat.listarMaterias()){
+            System.out.println(materia);
+        }
+        */
+        //-------------------------------------------------------------
+        
+        // MÉTODO GUARDAR INSCRIPCIÓN
+        
+        Alumno alumno = new Alumno(1, "Cristian", "Ridao", 112233, LocalDate.of(1992, 9, 2), true);
+        Materia materia = new Materia (1, "Química", 1, true);
+        Inscripcion inscrip = new Inscripcion (alumno, materia);
+        
+        insc.guardarInscripcion(inscrip);
+        
+        //-------------------------------------------------------------
         
     }
     
