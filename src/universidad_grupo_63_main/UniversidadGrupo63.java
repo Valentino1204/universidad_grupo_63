@@ -180,13 +180,67 @@ public class UniversidadGrupo63 {
         
         // MÉTODO GUARDAR INSCRIPCIÓN
         
+        /*
         Alumno alumno = new Alumno(1, "Cristian", "Ridao", 112233, LocalDate.of(1992, 9, 2), true);
         Materia materia = new Materia (1, "Química", 1, true);
         Inscripcion inscrip = new Inscripcion (alumno, materia);
         
         insc.guardarInscripcion(inscrip);
+        */
+        
+        /*
+        Alumno alumno = alu.buscarAlumno(3); // alu INSTANCIA DE AlumnoData
+        
+        Materia materia = mat.buscarMateria(2); // mat INSTANCIA DE MateriaData
+        
+        Inscripcion inscripcion = new Inscripcion (alumno, materia); 
+        
+        insc.guardarInscripcion(inscripcion); // guardarInscripcion PERTENECE A LA CLASE InscripcionData
+        */        
+
+        //-------------------------------------------------------------
+        
+        // MÉTODO ACTUALIZAR NOTA
+        
+        /*
+        Alumno alumno = alu.buscarAlumno(1); // alu INSTANCIA DE AlumnoData
+        
+        Materia materia = mat.buscarMateria(1); // mat INSTANCIA DE MateriaData
+        
+        Inscripcion inscripcion =  new Inscripcion (9, alumno, materia);
+        
+        insc.actualizarNota(inscripcion, (float) 8);
+        */
+        
+        /*
+        for (Inscripcion inscripcion : insc.obtenerInscripciones()) {
+            if (inscripcion.getIdInscripcion()==3) { // MODIFICA ÚNICAMENTE POR EL ID INSCRIPCIÓN
+                insc.actualizarNota(inscripcion.getIdInscripcion(), 2); // VALOR DE LA NOTA MODIFICADA
+            }
+        }
+        */
+        
         
         //-------------------------------------------------------------
+        
+        // MÉTODO OBTENER INSCRIPCIONES
+        
+        /*
+        for(Inscripcion inscripcion : insc.obtenerInscripciones()){
+            System.out.println(inscripcion);
+        }
+        */
+        
+        //-------------------------------------------------------------
+        
+        // MÉTODO BORRAR INSCRIPCIÓN MATERIA ALUMNO
+        
+        /*
+        insc.borrarInscripcionMateriaAlumno(1);
+        */
+        
+        //-------------------------------------------------------------
+        
         
     }
     

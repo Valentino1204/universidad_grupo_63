@@ -24,6 +24,13 @@ public class Inscripcion {
         this.materia = materia;
     }
 
+    public Inscripcion(int idInscripcion, Alumno alumno, Materia materia) {
+        this.idInscripcion = idInscripcion;
+        this.alumno = alumno;
+        this.materia = materia;
+    }
+
+    
     public Inscripcion(float nota, Alumno alumno, Materia materia) {
         this.nota = nota;
         this.alumno = alumno;
@@ -68,7 +75,13 @@ public class Inscripcion {
         this.materia = materia;
     }
 
+    @Override
+    public String toString() {
+        return "Inscripcion{" + "idInscripcion=" + idInscripcion + ", nota=" + nota + ", idAlumno=" + alumno.getIdAlumno() + ", idMateria=" + materia.getIdMateria() + '}';
+    }
+
    
+    
     
     
     
