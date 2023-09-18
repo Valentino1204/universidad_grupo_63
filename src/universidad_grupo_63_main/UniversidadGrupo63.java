@@ -188,15 +188,15 @@ public class UniversidadGrupo63 {
         insc.guardarInscripcion(inscrip);
         */
         
-        /*
-        Alumno alumno = alu.buscarAlumno(3); // alu INSTANCIA DE AlumnoData
+        
+        Alumno alumno = alu.buscarAlumno(2); // alu INSTANCIA DE AlumnoData
         
         Materia materia = mat.buscarMateria(2); // mat INSTANCIA DE MateriaData
         
         Inscripcion inscripcion = new Inscripcion (alumno, materia); 
         
         insc.guardarInscripcion(inscripcion); // guardarInscripcion PERTENECE A LA CLASE InscripcionData
-        */        
+              
 
         //-------------------------------------------------------------
         

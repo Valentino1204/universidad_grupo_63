@@ -49,9 +49,19 @@ public class InscripcionData {
             
             ps.close();
             
+        /* Control de excepcion por inscripciones duplicadas
+            
+        } catch(SQLIntegrityConstraintViolationException ex){
+            JOptionPane.showMessageDialog(null, "No se pudo inscribir");
+        */
         } catch (SQLException ex) {
+            if(ex.getErrorCode() == 1062){
+                JOptionPane.showMessageDialog(null,"Inscripcion Duplicada");
+            }else{
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripción");
-        } 
+            }
+        }
+        
     }
     
     // MÉTODO ACTUALIZAR NOTA
