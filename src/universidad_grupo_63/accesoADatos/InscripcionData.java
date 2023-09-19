@@ -12,7 +12,7 @@ import universidad_grupo_63.entidades.Materia;
 //import java.sql.Connection;
 
 public class InscripcionData {
-    
+    //comentario prueba
     private Connection con=null; // SE INICIALIZA LA CONEXIÓN
     
     private AlumnoData alumnoData = new AlumnoData();
