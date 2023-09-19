@@ -188,17 +188,17 @@ public class UniversidadGrupo63 {
         insc.guardarInscripcion(inscrip);
         */
         
-        
-        Alumno alumno = alu.buscarAlumno(5); // alu INSTANCIA DE AlumnoData
+        /*
+        Alumno alumno = alu.buscarAlumno(4); // alu INSTANCIA DE AlumnoData
         
         Materia materia = mat.buscarMateria(5); // mat INSTANCIA DE MateriaData
         
-        if(alumno != null || materia != null){
+        if(alumno != null && materia != null){
             Inscripcion inscripcion = new Inscripcion (alumno, materia); 
         
             insc.guardarInscripcion(inscripcion); // guardarInscripcion PERTENECE A LA CLASE InscripcionData
         }
-        
+        */
               
 
         //-------------------------------------------------------------
@@ -244,6 +244,35 @@ public class UniversidadGrupo63 {
         
         //-------------------------------------------------------------
         
+        // MÉTODO OBTENER INSCRIPCIONES POR ALUMNO
+        
+        /*
+        for(Inscripcion inscripcion : insc.obtenerInscripcionesPorAlumno(3)){
+            System.out.println(inscripcion);
+        }
+        */
+        
+        //-------------------------------------------------------------
+        
+        // MÉTODO OBTENER MATERIAS CURSADAS
+        
+        /*
+        for(Materia materia : insc.obtenerMateriasCursadas(1)){
+            System.out.println(materia);
+        }
+        */
+        
+        //-------------------------------------------------------------
+        
+        // MÉTODO OBTENER MATERIAS NO CURSADAS
+        
+        
+        for(Materia materia : insc.obtenerMateriasNoCursadas(1)){
+            System.out.println(materia);
+        }
+        
+        
+        //-------------------------------------------------------------
         
     }
     

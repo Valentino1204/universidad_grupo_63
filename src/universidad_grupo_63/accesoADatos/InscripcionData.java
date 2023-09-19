@@ -12,7 +12,7 @@ import universidad_grupo_63.entidades.Materia;
 //import java.sql.Connection;
 
 public class InscripcionData {
-    //comentario prueba
+    
     private Connection con=null; // SE INICIALIZA LA CONEXIÓN
     
     private AlumnoData alumnoData = new AlumnoData();
@@ -145,6 +145,101 @@ public class InscripcionData {
         }
     }
     
+    // MÉTODO OBTENER INSCRIPCIONES POR ALUMNO
     
+    public ArrayList<Inscripcion> obtenerInscripcionesPorAlumno(int id) {
+        
+        ArrayList<Inscripcion> listaInscripcionesPorAlumno = new ArrayList<>();
+        
+        String sql = "SELECT * FROM inscripcion WHERE idAlumno = ? ";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setInt(1, id);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                Inscripcion inscripcion = new Inscripcion();
+                inscripcion.setIdInscripcion(rs.getInt("idInscripcion"));
+                inscripcion.setNota(rs.getFloat("nota"));
+                Alumno alumno = alumnoData.buscarAlumno(rs.getInt("idAlumno"));
+                inscripcion.setAlumno(alumno);
+                Materia materia = materiaData.buscarMateria(rs.getInt("idMateria"));
+                inscripcion.setMateria(materia);
+                
+                listaInscripcionesPorAlumno.add(inscripcion);
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripción");
+        }
+        
+        return listaInscripcionesPorAlumno;
+        
+    }
+    
+    // MÉTODO OBTENER MATERIAS CURSADAS
+    
+    public ArrayList<Materia> obtenerMateriasCursadas (int id) { // OBTENER MATERIAS CURSADAS DE UN ALUMNO
+        
+        ArrayList<Materia> listaMateriasCursadas = new ArrayList<>();
+        
+        String sql = "SELECT idMateria FROM inscripcion WHERE idAlumno=?";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setInt(1, id);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+               
+                listaMateriasCursadas.add(materiaData.buscarMateria(rs.getInt("idMateria")));
+            }
+            ps.close();
+        } catch (SQLException ex) {
+          JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripción");  
+        }
+        
+        return listaMateriasCursadas;
+        
+    }
+    
+    // MÉTODO OBTENER MATERIAS NO CURSADAS
+    
+    public ArrayList<Materia> obtenerMateriasNoCursadas(int idAlumno) { 
+        
+        ArrayList<Materia> listaMateriasNoCursadas = new ArrayList<>();
+        
+        String sql = "SELECT * FROM materia WHERE estadoMateria = 1 AND idMateria not in "
+                + "(SELECT idMateria FROM inscripcion WHERE idAlumno = ?)";
+                
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setInt(1, idAlumno);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Materia materia = new Materia();
+                materia.setIdMateria(rs.getInt("idMateria"));
+                materia.setNombreMateria(rs.getString("nombreMateria"));
+                materia.setAnio(rs.getInt("anio"));
+                materia.setEstadoMateria(true);
+                listaMateriasNoCursadas.add(materia);
+                        
+            }
+            
+          ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripción");
+        }
+        
+        
+        return listaMateriasNoCursadas;
+    }
     
 }
