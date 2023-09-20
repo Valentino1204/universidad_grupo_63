@@ -242,4 +242,41 @@ public class InscripcionData {
         return listaMateriasNoCursadas;
     }
     
+    // MÉTODO OBTENER ALUMNOS POR MATERIA
+    
+    public ArrayList <Alumno> obtenerAlumnosPorMateria (int idMateria) {
+        
+        ArrayList <Alumno> listaAlumnosPorMateria = new ArrayList<>();
+        
+        // SENTENCIA SQL
+        // QUEREMOS TODOS LOS DATOS DE LOS ALUMNOS POR ESO SELECT 
+        // a.idAlumno SE REFIERE A LA TABLA alumno
+        // UNIMOS LAS TABLAS inscripcion Y alumno
+        // EN WHERE VA LA CONDICIÓN DE UNIÓN inscripcion.idAlumno = alumno.idAlumno
+        // idMateria LO PASAS POR PARÁMETRO POR ESO idMateria = ?
+        // Y QUE EL ALUMNO ESTÉ ACTIVO idAlumno = 1
+        
+        String sql = "SELECT a.idAlumno, nombre, apellido, dni, fechaNacimiento FROM inscripcion i , alumno a WHERE i.idAlumno = a.idAlumno AND idMateria = ? AND estadoAlumno = 1 ";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idMateria);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                Alumno alumno = new Alumno();
+                alumno.setIdAlumno(rs.getInt("idAlumno"));
+                alumno.setNombre(rs.getString("nombre"));
+                alumno.setApellido(rs.getString("apellido"));
+                alumno.setDni(rs.getInt("dni"));
+                alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
+                alumno.setEstadoAlumno(true);
+                listaAlumnosPorMateria.add(alumno);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripción");
+        }
+        return listaAlumnosPorMateria;
+    }
+    
 }

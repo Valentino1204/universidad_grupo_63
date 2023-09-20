@@ -266,13 +266,19 @@ public class UniversidadGrupo63 {
         
         // MÉTODO OBTENER MATERIAS NO CURSADAS
         
-        
+        /*
         for(Materia materia : insc.obtenerMateriasNoCursadas(1)){
             System.out.println(materia);
         }
-        
+        */
         
         //-------------------------------------------------------------
+        
+        // MÉTODO OBTENER ALUMNOS POR MATERIA
+        
+        for(Alumno alumno : insc.obtenerAlumnosPorMateria(1)){
+            System.out.println(alumno);
+        }
         
     }
     
