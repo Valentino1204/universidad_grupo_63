@@ -37,10 +37,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1080, 610));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(90, 184, 233));
+        jPanel1.setBackground(new java.awt.Color(0, 170, 228));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setBackground(new java.awt.Color(0, 160, 217));
+        jLabel1.setBackground(new java.awt.Color(90, 184, 233));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -87,7 +87,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jLabel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseExited
         // TODO add your handling code here:
-        jLabel1.setBackground(Color.decode("#00A0D9")); // CUANDO SACA EL MOUSE VUELVE AL COLOR QUE ESTABA
+        jLabel1.setBackground(Color.decode("#5AB8E9")); // CUANDO SACA EL MOUSE VUELVE AL COLOR QUE ESTABA
     }//GEN-LAST:event_jLabel1MouseExited
 
     /**
