@@ -276,10 +276,11 @@ public class UniversidadGrupo63 {
         
         // MÉTODO OBTENER ALUMNOS POR MATERIA
         
+        /*
         for(Alumno alumno : insc.obtenerAlumnosPorMateria(1)){
             System.out.println(alumno);
         }
-        
+        */
     }
     
 }
