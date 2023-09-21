@@ -15,9 +15,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form MenuPrincipal
      */
+    
+    public final int WIDTH = 850;
+    public final int HEIGHT = 610;
+    
     public MenuPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null); // MENÚ APARECE EN EL MEDIO
+        Home home = new Home(); // INSTANCIA DE JPANEL PARA SETEAR QUE HACE
+        home.setSize(WIDTH, HEIGHT); //SE ABRE LA PÁGINA HOME
+        home.setLocation(0, 0);
+        contenido.removeAll();
+        contenido.add(home);
+        contenido.revalidate();
+        contenido.repaint();
     }
 
     /**
@@ -31,6 +42,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         contenido = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -44,7 +56,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("HOME");
+        jLabel1.setText("AGREGAR ALUMNO");
         jLabel1.setOpaque(true);
         jLabel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -52,11 +64,35 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jLabel1MouseExited(evt);
             }
         });
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 260, 50));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 260, 50));
+
+        jLabel2.setBackground(new java.awt.Color(90, 184, 233));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("HOME");
+        jLabel2.setOpaque(true);
+        jLabel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jLabel2MouseMoved(evt);
+            }
+        });
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel2MouseExited(evt);
+            }
+        });
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 260, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 257, 736));
 
@@ -89,6 +125,36 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         jLabel1.setBackground(Color.decode("#5AB8E9")); // CUANDO SACA EL MOUSE VUELVE AL COLOR QUE ESTABA
     }//GEN-LAST:event_jLabel1MouseExited
+
+    private void jLabel2MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel2MouseMoved
+
+    private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel2MouseExited
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+        Home home = new Home(); 
+        home.setSize(WIDTH, HEIGHT); 
+        home.setLocation(0, 0);
+        contenido.removeAll();
+        contenido.add(home);
+        contenido.revalidate();
+        contenido.repaint();
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        AgregarAlumno agregarAlumno = new AgregarAlumno();
+        agregarAlumno.setSize(WIDTH, HEIGHT);
+        agregarAlumno.setLocation(0, 0);
+        contenido.removeAll();
+        contenido.add(agregarAlumno);
+        contenido.revalidate();
+        contenido.repaint();
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -123,11 +189,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 new MenuPrincipal().setVisible(true);
             }
         });
-    }
+        
+    } 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contenido;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
