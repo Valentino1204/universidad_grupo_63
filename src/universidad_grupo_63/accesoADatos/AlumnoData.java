@@ -79,6 +79,8 @@ public class AlumnoData {
     
     public void modificarAlumno (Alumno alumno) {
         
+       
+        
         String sql = "UPDATE alumno SET nombre=?, apellido=?, dni=?, fechaNacimiento=?"
            + "WHERE idAlumno=?";     
         
@@ -105,10 +107,12 @@ public class AlumnoData {
     
     // CAMBIO ESTADO ALUMNO (ACTIVARLO/DESACTIVARLO)
     
-    public void cambiarEstadoAlumno (Alumno alumno) {
+    public void cambiarEstadoAlumno (int id) {
         
-        int id = alumno.getIdAlumno(); //AL OBJETO ALUMNO LE EXTRAES IdAlumno Y LO GUARDAS EN LA VARIABLE id
+        //int id = alumno.getIdAlumno(); //AL OBJETO ALUMNO LE EXTRAES IdAlumno Y LO GUARDAS EN LA VARIABLE id
       
+        Alumno alumno = buscarAlumno(id);
+        
         String sql = "UPDATE alumno SET estadoAlumno=? WHERE idAlumno=?"; // SETEAS EL ESTADO PARA EL IdAlumno SELECCIONADO
         
         try {
