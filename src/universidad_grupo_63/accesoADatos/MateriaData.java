@@ -21,6 +21,7 @@ public class MateriaData {
     // MÉTODO GUARDAR MATERIA
     public void guardarMateria(Materia materia) {
 
+        
         String sql = "INSERT INTO materia(nombreMateria, anio, estadoMateria)"
                 + "VALUES(?, ?, ?)";
 
@@ -50,6 +51,7 @@ public class MateriaData {
     // MÉTODO MODIFICAR MATERIA
     public void modificarMateria(Materia materia) {
 
+
         String sql = "UPDATE materia SET nombreMateria=?, anio=? "
                 + "WHERE idMateria=?";
 
@@ -73,10 +75,10 @@ public class MateriaData {
 
     // MÉTODO CAMBIAR ESTADO MATERIA (ACTIVAR/DESACTIVAR)
     
-    public void cambiarEstadoMateria(Materia materia) {
+    public void cambiarEstadoMateria(int id) {
 
-        int id = materia.getIdMateria();
-
+        Materia materia = buscarMateria(id);
+        
         String sql = "UPDATE materia SET estadoMateria=? WHERE idMateria=?";
 
         try {
