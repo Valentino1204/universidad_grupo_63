@@ -18,8 +18,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
      * Creates new form MenuPrincipal
      */
     
-    public final int WIDTH = 850;
-    public final int HEIGHT = 610;
+    public final int WIDTH = 970;
+    public final int HEIGHT = 520;
     
     public MenuPrincipal() {
         initComponents();
@@ -42,34 +42,23 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        contenido = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
+        contenido = new javax.swing.JPanel();
         btnHome = new javax.swing.JLabel();
         btnGestionMaterias = new javax.swing.JLabel();
         btnGestionAlumnos = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1080, 610));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        contenido.setBackground(new java.awt.Color(255, 255, 255));
-        contenido.setPreferredSize(new java.awt.Dimension(850, 610));
-
-        javax.swing.GroupLayout contenidoLayout = new javax.swing.GroupLayout(contenido);
-        contenido.setLayout(contenidoLayout);
-        contenidoLayout.setHorizontalGroup(
-            contenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 970, Short.MAX_VALUE)
-        );
-        contenidoLayout.setVerticalGroup(
-            contenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 970, 600));
-
         jPanel1.setBackground(new java.awt.Color(0, 170, 228));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        contenido.setBackground(new java.awt.Color(255, 255, 255));
+        contenido.setPreferredSize(new java.awt.Dimension(970, 520));
+        contenido.setLayout(new java.awt.BorderLayout());
 
         btnHome.setBackground(new java.awt.Color(90, 184, 233));
         btnHome.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -88,7 +77,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 btnHomeMouseExited(evt);
             }
         });
-        jPanel1.add(btnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 250, 50));
 
         btnGestionMaterias.setBackground(new java.awt.Color(90, 184, 233));
         btnGestionMaterias.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -107,7 +95,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 btnGestionMateriasMouseExited(evt);
             }
         });
-        jPanel1.add(btnGestionMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 250, 50));
 
         btnGestionAlumnos.setBackground(new java.awt.Color(90, 184, 233));
         btnGestionAlumnos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -126,9 +113,40 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 btnGestionAlumnosMouseExited(evt);
             }
         });
-        jPanel1.add(btnGestionAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 250, 50));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 257, 736));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Logo7060.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel4))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGestionAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGestionMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(contenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel4)
+                .addGap(10, 10, 10)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(btnGestionAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(btnGestionMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(contenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1220, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -159,7 +177,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         GestionAlumno agregarAlumno = new GestionAlumno();
         agregarAlumno.setSize(WIDTH, HEIGHT);
-        agregarAlumno.setLocation(0, 0);
+        //agregarAlumno.setLocation(0, 0);
         contenido.removeAll();
         contenido.add(agregarAlumno);
         contenido.revalidate();
@@ -170,7 +188,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         GestionMateria gestionMateria = new GestionMateria();
         gestionMateria.setSize(WIDTH, HEIGHT);
-        gestionMateria.setLocation(0, 0);
+        //gestionMateria.setLocation(0, 0);
         contenido.removeAll();
         contenido.add(gestionMateria);
         contenido.revalidate();
@@ -208,7 +226,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -238,6 +256,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel btnGestionMaterias;
     private javax.swing.JLabel btnHome;
     private javax.swing.JPanel contenido;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
     private void mouseEntered(JLabel btn) {

@@ -50,8 +50,6 @@ public class GestionMateria extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -67,26 +65,7 @@ public class GestionMateria extends javax.swing.JPanel {
         btnEliminarMateria = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        jPanel2.setBackground(new java.awt.Color(0, 170, 228));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("GESTOR DE MATERIAS");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-        );
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(226, 240, 251));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -94,14 +73,14 @@ public class GestionMateria extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(153, 153, 153));
         jLabel2.setText("Nombre");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 37, 55, 26));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 55, 26));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(153, 153, 153));
         jLabel5.setText("Año");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 55, 26));
-        jPanel3.add(jTextFieldNombreMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 120, -1));
-        jPanel3.add(jTextFieldAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 120, -1));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 55, 26));
+        jPanel3.add(jTextFieldNombreMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 200, -1));
+        jPanel3.add(jTextFieldAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 200, -1));
 
         btnAgregarMateria.setBackground(new java.awt.Color(90, 184, 233));
         btnAgregarMateria.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -120,7 +99,7 @@ public class GestionMateria extends javax.swing.JPanel {
                 btnAgregarMateriaMouseExited(evt);
             }
         });
-        jPanel3.add(btnAgregarMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 100, 30));
+        jPanel3.add(btnAgregarMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 130, 30));
 
         btnActualizarMateria.setBackground(new java.awt.Color(90, 184, 233));
         btnActualizarMateria.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -139,7 +118,7 @@ public class GestionMateria extends javax.swing.JPanel {
                 btnActualizarMateriaMouseExited(evt);
             }
         });
-        jPanel3.add(btnActualizarMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 140, 30));
+        jPanel3.add(btnActualizarMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 130, 30));
 
         btnLimpiar.setBackground(new java.awt.Color(90, 184, 233));
         btnLimpiar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -158,7 +137,7 @@ public class GestionMateria extends javax.swing.JPanel {
                 btnLimpiarMouseExited(evt);
             }
         });
-        jPanel3.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 100, 30));
+        jPanel3.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 120, 30));
 
         btnBuscarMateria.setBackground(new java.awt.Color(90, 184, 233));
         btnBuscarMateria.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -177,7 +156,9 @@ public class GestionMateria extends javax.swing.JPanel {
                 btnBuscarMateriaMouseExited(evt);
             }
         });
-        jPanel3.add(btnBuscarMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 100, 30));
+        jPanel3.add(btnBuscarMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 120, 30));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 318, 308));
 
         jPanel4.setBackground(new java.awt.Color(226, 240, 251));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -201,7 +182,7 @@ public class GestionMateria extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTableMaterias);
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 410, 230));
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 450, 230));
 
         btnEliminarMateria.setBackground(new java.awt.Color(204, 0, 0));
         btnEliminarMateria.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -220,36 +201,15 @@ public class GestionMateria extends javax.swing.JPanel {
                 btnEliminarMateriaMouseExited(evt);
             }
         });
-        jPanel4.add(btnEliminarMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 100, 30));
+        jPanel4.add(btnEliminarMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 100, 30));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(55, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 348, Short.MAX_VALUE))
-        );
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 490, 308));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -352,11 +312,9 @@ public class GestionMateria extends javax.swing.JPanel {
     private javax.swing.JLabel btnBuscarMateria;
     private javax.swing.JLabel btnEliminarMateria;
     private javax.swing.JLabel btnLimpiar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
