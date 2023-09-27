@@ -7,9 +7,10 @@ package universidad_grupo_63.vistas;
 import java.awt.Color;
 import java.awt.Point;
 import java.time.LocalDate;
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.Timer;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import universidad_grupo_63.accesoADatos.MateriaData;
 import universidad_grupo_63.entidades.Materia;
@@ -83,7 +84,19 @@ public class GestionMateria extends javax.swing.JPanel {
         jLabel5.setForeground(new java.awt.Color(153, 153, 153));
         jLabel5.setText("Año");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 55, 26));
+
+        jTextFieldNombreMateria.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldNombreMateriaKeyReleased(evt);
+            }
+        });
         jPanel3.add(jTextFieldNombreMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 180, -1));
+
+        jTextFieldAnio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldAnioKeyReleased(evt);
+            }
+        });
         jPanel3.add(jTextFieldAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 180, -1));
 
         btnAgregarMateria.setBackground(new java.awt.Color(90, 184, 233));
@@ -245,7 +258,7 @@ public class GestionMateria extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     //------------------ Eventos Mouse Clicked ----------------------
-    
+   
     private void btnEliminarMateriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMateriaMouseClicked
         eliminacionLogicaMateria();
     }//GEN-LAST:event_btnEliminarMateriaMouseClicked
@@ -259,7 +272,6 @@ public class GestionMateria extends javax.swing.JPanel {
     }//GEN-LAST:event_btnActualizarMateriaMouseClicked
 
     private void jTableMateriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMateriasMouseClicked
-        // TODO add your handling code here:
         cargarTextFields();
         aparecerBotonEliminar();
         btnAgregarMateria.setVisible(false);
@@ -267,25 +279,24 @@ public class GestionMateria extends javax.swing.JPanel {
     }//GEN-LAST:event_jTableMateriasMouseClicked
 
     private void btnLimpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseClicked
-        // TODO add your handling code here:
         limpiarTextFields();
         cargarTablaMaterias();
+        jTextFieldNombreMateria.setBorder(null);
+        jTextFieldAnio.setBorder(null);
         btnAgregarMateria.setVisible(true);
         btnActualizarMateria.setVisible(false);
     }//GEN-LAST:event_btnLimpiarMouseClicked
 
     private void btnBuscarMateriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMateriaMouseClicked
-        buscarEnTabla(); 
+        buscarEnTabla();
     }//GEN-LAST:event_btnBuscarMateriaMouseClicked
   
     // ---------------- Eventos Tamaño y Color Botones ------------------------
     
-    // BTN Limpiar
     private void btnLimpiarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseExited
         mouseExited(btnLimpiar);
     }//GEN-LAST:event_btnLimpiarMouseExited
 
-    //BTN Eliminar
     private void btnEliminarMateriaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMateriaMouseExited
         btnEliminarMateria.setBackground(Color.decode("#840000"));
     }//GEN-LAST:event_btnEliminarMateriaMouseExited
@@ -293,8 +304,7 @@ public class GestionMateria extends javax.swing.JPanel {
     private void btnLimpiarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseEntered
         mouseEntered(btnLimpiar);
     }//GEN-LAST:event_btnLimpiarMouseEntered
-    
-    // BTN Buscar
+
     private void btnBuscarMateriaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMateriaMouseEntered
         mouseEntered(btnBuscarMateria);
     }//GEN-LAST:event_btnBuscarMateriaMouseEntered
@@ -307,7 +317,6 @@ public class GestionMateria extends javax.swing.JPanel {
         btnEliminarMateria.setBackground(Color.red);
     }//GEN-LAST:event_btnEliminarMateriaMouseEntered
     
-    // BTN Actualizar
     private void btnActualizarMateriaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMateriaMouseEntered
         // TODO add your handling code here:
         mouseEntered(btnActualizarMateria);
@@ -318,7 +327,6 @@ public class GestionMateria extends javax.swing.JPanel {
         mouseExited(btnActualizarMateria);
     }//GEN-LAST:event_btnActualizarMateriaMouseExited
 
-    //BTN Agregar
     private void btnAgregarMateriaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMateriaMouseEntered
         // TODO add your handling code here:
         mouseEntered(btnAgregarMateria);
@@ -329,8 +337,17 @@ public class GestionMateria extends javax.swing.JPanel {
         mouseExited(btnAgregarMateria);
     }//GEN-LAST:event_btnAgregarMateriaMouseExited
 
-    
-    
+    private void jTextFieldNombreMateriaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreMateriaKeyReleased
+        // TODO add your handling code here:
+        validacionTextField1(jTextFieldNombreMateria);
+    }//GEN-LAST:event_jTextFieldNombreMateriaKeyReleased
+
+    private void jTextFieldAnioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldAnioKeyReleased
+        // TODO add your handling code here:
+        validacionTextField1(jTextFieldAnio);
+    }//GEN-LAST:event_jTextFieldAnioKeyReleased
+
+
     //--------------------------------------------------------------------
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -409,16 +426,79 @@ public class GestionMateria extends javax.swing.JPanel {
     }
 
     private void agregarMateria() {
-        Materia nuevaMateria = new Materia(); // CONSTRUCTOR VACÍO
-        nuevaMateria.setNombreMateria(jTextFieldNombreMateria.getText()); // LE SETEAS EL NOMBRE QUE LO EXTRAES DEL TEXTFIELD
-        nuevaMateria.setAnio(Integer.parseInt(jTextFieldAnio.getText()));
-        nuevaMateria.setEstadoMateria(true);
-        materiaData.guardarMateria(nuevaMateria);
+        Materia nuevaMateria = new Materia();
+        boolean[] materiaRellena = {false, false};
+        try{
+            if(validacionTextField1(jTextFieldNombreMateria)){
+                nuevaMateria.setNombreMateria(jTextFieldNombreMateria.getText());
+                materiaRellena[0]=true;
+            }else{
+                JOptionPane.showMessageDialog(this, "Debe ingresar un nombre de Materia");
+                materiaRellena[0] = false;
+            }
+            if(validacionTextField1(jTextFieldAnio)){
+                nuevaMateria.setAnio(Integer.parseInt(jTextFieldAnio.getText()));
+                materiaRellena[1]=true;
+            }else{
+                JOptionPane.showMessageDialog(this, "Debe ingresar el año");
+                materiaRellena[1] = false;
+            }
+            
+            nuevaMateria.setEstadoMateria(true);
+            
+            if(materiaRellena[0]==true && materiaRellena[1]==true){
+                materiaData.guardarMateria(nuevaMateria);
+                limpiarTextFields();
+                cargarTablaMaterias();
+            }
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Ingrese correctamente el año");
+            jTextFieldAnio.setText("");
+            validacionTextField1(jTextFieldAnio);
+        }
         
-        limpiarTextFields();
-        cargarTablaMaterias();
     }
+    
+    private void actualizarMateria() {
+        
+        int filaSeleccionada = jTableMaterias.getSelectedRow();
+        boolean[] materiaRellena = {false, false};
+        
+        if (filaSeleccionada!=-1) {
+            int idMateria = (Integer) jTableMaterias.getValueAt(filaSeleccionada, 0);
+            Materia materia = materiaData.buscarMateria(idMateria);
+            
+            try{
+                if(validacionTextField1(jTextFieldNombreMateria)){
+                    materia.setNombreMateria(jTextFieldNombreMateria.getText());
+                    materiaRellena[0]=true;
+                }else{
+                    JOptionPane.showMessageDialog(this, "Debe ingresar un nombre de Materia");
+                    materiaRellena[0] = false;
+                }
+                if(validacionTextField1(jTextFieldAnio)){
+                    materia.setAnio(Integer.parseInt(jTextFieldAnio.getText()));
+                    materiaRellena[1]=true;
+                }else{
+                    JOptionPane.showMessageDialog(this, "Debe ingresar el año");
+                    materiaRellena[1] = false;
+                }
 
+                if(materiaRellena[0]==true && materiaRellena[1]==true){
+                    materiaData.modificarMateria(materia); 
+                    limpiarTextFields();
+                    cargarTablaMaterias();
+                    btnActualizarMateria.setVisible(false);
+                    btnAgregarMateria.setVisible(true);
+                }
+            }catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(this, "Ingrese correctamente el año");
+                jTextFieldAnio.setText("");
+                validacionTextField1(jTextFieldAnio);
+            }
+        }
+    }    
+    
     private void aparecerBotonEliminar() {
        int filaSeleccionada = jTableMaterias.getSelectedRow();
         
@@ -458,24 +538,14 @@ public class GestionMateria extends javax.swing.JPanel {
         }
     }
     
-    
-
-    private void actualizarMateria() {
-        
-        int filaSeleccionada = jTableMaterias.getSelectedRow();
-        
-        if (filaSeleccionada!=-1) {
-          int idMateria = (Integer) jTableMaterias.getValueAt(filaSeleccionada, 0);
-          Materia materia = materiaData.buscarMateria(idMateria);
-          materia.setNombreMateria(jTextFieldNombreMateria.getText());
-          materia.setAnio(Integer.parseInt(jTextFieldAnio.getText()));
-          materiaData.modificarMateria(materia); 
+    private boolean validacionTextField1(JTextField jtf) {
+        if (jtf.getText().isEmpty()) {
+            jtf.setBorder(BorderFactory.createLineBorder(Color.decode("#aa4356")));
+            return false;
+        } else {
+            jtf.setBorder(null);
+            return true;
         }
-        
-        btnActualizarMateria.setVisible(false);
-        btnAgregarMateria.setVisible(true);
-        limpiarTextFields();
-        cargarTablaMaterias();
     }
     
     //------------------- Animacion botones celestes -----------------------

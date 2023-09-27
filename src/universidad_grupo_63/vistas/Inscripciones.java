@@ -71,7 +71,7 @@ public class Inscripciones extends javax.swing.JPanel {
         btnInscriptas = new javax.swing.JLabel();
         btnNoInscriptas = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTableMateriasCursadas = new javax.swing.JTable();
+        jTableMaterias = new javax.swing.JTable();
         btnInscribir = new javax.swing.JLabel();
         btnAnularInscripcion = new javax.swing.JLabel();
         btnGuardarNota = new javax.swing.JLabel();
@@ -128,7 +128,7 @@ public class Inscripciones extends javax.swing.JPanel {
         });
         jPanel3.add(btnNoInscriptas, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 150, 30));
 
-        jTableMateriasCursadas.setModel(new javax.swing.table.DefaultTableModel(
+        jTableMaterias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -139,18 +139,18 @@ public class Inscripciones extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTableMateriasCursadas.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        jTableMateriasCursadas.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTableMaterias.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        jTableMaterias.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableMateriasCursadasMouseClicked(evt);
+                jTableMateriasMouseClicked(evt);
             }
         });
-        jTableMateriasCursadas.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        jTableMaterias.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jTableMateriasCursadasPropertyChange(evt);
+                jTableMateriasPropertyChange(evt);
             }
         });
-        jScrollPane2.setViewportView(jTableMateriasCursadas);
+        jScrollPane2.setViewportView(jTableMaterias);
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 650, 120));
 
@@ -371,24 +371,29 @@ public class Inscripciones extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnInscriptasMouseExited
 
-    private void jTableMateriasCursadasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMateriasCursadasMouseClicked
-        int filaSeleccionada = jTableMateriasCursadas.getSelectedRow();
+    private void jTableMateriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMateriasMouseClicked
+        int filaSeleccionada = jTableMaterias.getSelectedRow();
         if (filaSeleccionada!=-1) {
-            jTextFieldNota.setText(String.valueOf(jTableMateriasCursadas.getValueAt(filaSeleccionada,3)));
+            jTextFieldNota.setText(String.valueOf(jTableMaterias.getValueAt(filaSeleccionada,3)));
         }
-    }//GEN-LAST:event_jTableMateriasCursadasMouseClicked
+    }//GEN-LAST:event_jTableMateriasMouseClicked
 
-    private void jTableMateriasCursadasPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTableMateriasCursadasPropertyChange
+    private void jTableMateriasPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTableMateriasPropertyChange
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jTableMateriasCursadasPropertyChange
+    }//GEN-LAST:event_jTableMateriasPropertyChange
 
     private void btnInscribirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInscribirMouseClicked
-        Inscripcion inscripcion = new Inscripcion();
-        inscripcion.setAlumno(alumnoData.buscarAlumno(extraerIdAlumnoDeTabla()));
-        inscripcion.setMateria(materiaData.buscarMateriaNombre(extraerNombreMateriaDeTabla()));
+        int filaSeleccionada = jTableMaterias.getSelectedRow();
         
-        inscripcionData.guardarInscripcion(inscripcion);
+        if (filaSeleccionada!=-1){
+            Inscripcion inscripcion = new Inscripcion();
+            inscripcion.setAlumno(alumnoData.buscarAlumno(extraerIdAlumnoDeTabla()));
+            inscripcion.setMateria(materiaData.buscarMateriaNombre(extraerNombreMateriaDeTabla()));
+            inscripcionData.guardarInscripcion(inscripcion);
+        }else{
+            JOptionPane.showMessageDialog(this,"Debe seleccionar una Materia");
+        }
         
         cargarTablaMateriasNoCursadas(extraerIdAlumnoDeTabla()); 
     }//GEN-LAST:event_btnInscribirMouseClicked
@@ -402,12 +407,15 @@ public class Inscripciones extends javax.swing.JPanel {
     }//GEN-LAST:event_btnInscribirMouseExited
 
     private void btnAnularInscripcionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnularInscripcionMouseClicked
-        int filaSeleccionada = jTableMateriasCursadas.getSelectedRow();
+        int filaSeleccionada = jTableMaterias.getSelectedRow();
+        
         if (filaSeleccionada!=-1) {
-        eliminarInscripcion(extraerIdInscripcionDeTabla());
-        cargarTablaMateriasCursadas(extraerIdAlumnoDeTabla()); 
-        btnAnularInscripcion.setVisible(false);
-        } 
+            eliminarInscripcion(extraerIdInscripcionDeTabla());
+            cargarTablaMateriasCursadas(extraerIdAlumnoDeTabla()); 
+            btnAnularInscripcion.setVisible(false);
+        } else{
+            JOptionPane.showMessageDialog(this,"Debe seleccionar una Materia");
+        }
     }//GEN-LAST:event_btnAnularInscripcionMouseClicked
 
     private void btnAnularInscripcionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnularInscripcionMouseEntered
@@ -420,9 +428,9 @@ public class Inscripciones extends javax.swing.JPanel {
 
     private void btnGuardarNotaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarNotaMouseClicked
         try{
-            int filaSeleccionada = jTableMateriasCursadas.getSelectedRow();
+            int filaSeleccionada = jTableMaterias.getSelectedRow();
             if (filaSeleccionada!=-1) {
-                inscripcionData.actualizarNota((Integer) jTableMateriasCursadas.getValueAt(filaSeleccionada, 0), Integer.parseInt(jTextFieldNota.getText()));
+                inscripcionData.actualizarNota((Integer) jTableMaterias.getValueAt(filaSeleccionada, 0), Integer.parseInt(jTextFieldNota.getText()));
                 jTextFieldNota.setText("");
                 cargarTablaMateriasCursadas(extraerIdAlumnoDeTabla()); 
             }
@@ -460,7 +468,7 @@ public class Inscripciones extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableAlumnos;
-    private javax.swing.JTable jTableMateriasCursadas;
+    private javax.swing.JTable jTableMaterias;
     private javax.swing.JTextField jTextFieldNota;
     // End of variables declaration//GEN-END:variables
 
@@ -469,7 +477,7 @@ public class Inscripciones extends javax.swing.JPanel {
         modeloTablaMateria.addColumn("Materia");
         modeloTablaMateria.addColumn("Año");
         modeloTablaMateria.addColumn("Nota");
-        jTableMateriasCursadas.setModel(modeloTablaMateria);
+        jTableMaterias.setModel(modeloTablaMateria);
     }
     
     
@@ -483,7 +491,7 @@ public class Inscripciones extends javax.swing.JPanel {
     
 
     public void borrarFilasMateria() {
-        int f = jTableMateriasCursadas.getRowCount()-1; // CANTIDAD DE FILAS MENOS UNO
+        int f = jTableMaterias.getRowCount()-1; // CANTIDAD DE FILAS MENOS UNO
         for (;f >= 0; f--) {
             modeloTablaMateria.removeRow(f);
         }
@@ -531,9 +539,9 @@ public class Inscripciones extends javax.swing.JPanel {
     }
     
     private void eliminarInscripcion(int idInscripcion) {
-        int filaSeleccionada = jTableMateriasCursadas.getSelectedRow();
+        int filaSeleccionada = jTableMaterias.getSelectedRow();
         if (filaSeleccionada!=-1) {
-            idInscripcion = (Integer) jTableMateriasCursadas.getValueAt(filaSeleccionada, 0);
+            idInscripcion = (Integer) jTableMaterias.getValueAt(filaSeleccionada, 0);
             inscripcionData.borrarInscripcionMateriaAlumno(idInscripcion);
         } else {
             JOptionPane.showMessageDialog(this, "Debe seleccionar una fila");
@@ -550,19 +558,19 @@ public class Inscripciones extends javax.swing.JPanel {
     }
     
     public int extraerIdInscripcionDeTabla(){
-        int filaSeleccionada = jTableMateriasCursadas.getSelectedRow();
+        int filaSeleccionada = jTableMaterias.getSelectedRow();
         int idInscripcion = 0;
         if (filaSeleccionada!=-1) {
-            idInscripcion = (Integer) jTableMateriasCursadas.getValueAt(filaSeleccionada, 0);
+            idInscripcion = (Integer) jTableMaterias.getValueAt(filaSeleccionada, 0);
         }
         return idInscripcion;
     }
     
     public String extraerNombreMateriaDeTabla(){
-        int filaSeleccionada = jTableMateriasCursadas.getSelectedRow();
+        int filaSeleccionada = jTableMaterias.getSelectedRow();
         String nombreMateria = null;
         if (filaSeleccionada!=-1) {
-            nombreMateria = jTableMateriasCursadas.getValueAt(filaSeleccionada, 1).toString();
+            nombreMateria = jTableMaterias.getValueAt(filaSeleccionada, 1).toString();
         }
         return nombreMateria;
     }

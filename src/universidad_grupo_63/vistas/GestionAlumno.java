@@ -5,14 +5,10 @@
 package universidad_grupo_63.vistas;
 
 import java.awt.Color;
-import java.awt.Image;
 import java.awt.Point;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import javax.swing.BorderFactory;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -386,6 +382,8 @@ public class GestionAlumno extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    //----------------- EVENTOS --------------------------------
+    
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
         eliminacionLogicaAlumno(); 
     }//GEN-LAST:event_btnEliminarMouseClicked
@@ -395,7 +393,6 @@ public class GestionAlumno extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAgregarAlumnoMouseClicked
 
     private void btnAgregarAlumnoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarAlumnoMouseExited
-        // TODO add your handling code here:
         mouseExited(btnAgregarAlumno);
     }//GEN-LAST:event_btnAgregarAlumnoMouseExited
 
@@ -413,6 +410,10 @@ public class GestionAlumno extends javax.swing.JPanel {
     private void btnLimpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseClicked
         limpiarTextFields();
         cargarTablaAlumnos();
+        jTextFieldNombre.setBorder(null);
+        jTextFieldApellido.setBorder(null);
+        jTextFieldDni.setBorder(null);
+        jTextFieldFechaNacimiento.setBorder(null);
         btnAgregarAlumno.setVisible(true);
         btnActualizarAlumno.setVisible(false);
     }//GEN-LAST:event_btnLimpiarMouseClicked
@@ -516,7 +517,7 @@ public class GestionAlumno extends javax.swing.JPanel {
         btnEliminar.setVisible(false);
     }
     
-    private void cargarTextFields() {
+    private void cargarTextFields() { //Cuando seleccionas una fila en la tabla, carga los textField con esos datos
         int filaSeleccionada = jTable1.getSelectedRow();
         if (filaSeleccionada!=-1) {
             String nombre = (String) jTable1.getValueAt(filaSeleccionada, 1);
@@ -534,7 +535,10 @@ public class GestionAlumno extends javax.swing.JPanel {
     }
     
     private void agregarAlumno() {
-        Alumno nuevoAlumno = new Alumno(); // CONSTRUCTOR VACÍO
+        // Instanciar un objeto alumno y setea los parametros con los datos de los textField
+        // Ademas valida todos los datos y captura excepciones.
+        
+        Alumno nuevoAlumno = new Alumno();
 
         boolean[] alumnoRelleno = {false, false, false, false};
 
@@ -577,23 +581,23 @@ public class GestionAlumno extends javax.swing.JPanel {
                 alumnoData.guardarAlumno(nuevoAlumno);
                 limpiarTextFields();
             }
-
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Ingrese los valores correctamente");
-            validacionTextField1(jTextFieldDni);
-            validacionTextField1(jTextFieldFechaNacimiento);
+            JOptionPane.showMessageDialog(this, "Ingrese el DNI correctamente");
             jTextFieldDni.setText("");
+            validacionTextField1(jTextFieldDni);
         } catch (DateTimeParseException e) {
             JOptionPane.showMessageDialog(this, "Ingrese correctamente la fecha");
-            validacionTextField1(jTextFieldDni);
-            validacionTextField1(jTextFieldFechaNacimiento);
             jTextFieldFechaNacimiento.setText("");
+            validacionTextField1(jTextFieldFechaNacimiento);
         } finally {
             cargarTablaAlumnos();
         }
     }
     
     private void actualizarAlumno() {
+       //Al seleccionar una fila de la tabla, trae todos los valores a los textField
+       //Si el usuario realiza una modificacion de los datos en los TextField, se ejecuta el metodo 'modificaAlumno' de AlumnoData
+       
        int filaSeleccionada = jTable1.getSelectedRow();
        boolean[] alumnoRelleno = {false, false, false, false};
        
@@ -641,14 +645,19 @@ public class GestionAlumno extends javax.swing.JPanel {
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(this, "Ingrese un valor 'DNI' correcto");
                 jTextFieldDni.setText("");    
+                validacionTextField1(jTextFieldDni);
             }catch(DateTimeParseException e){
                 JOptionPane.showMessageDialog(this, "Ingrese correctamente la fecha");
                 jTextFieldFechaNacimiento.setText("");  
+                validacionTextField1(jTextFieldFechaNacimiento);
             }
         } 
     }
 
     private void buscarAlumnoEnTabla() {
+        
+        //Toma los datos de los textField y realiza una busqueda en JTable
+        
         borrarFilas();
         
         String nombre = jTextFieldNombre.getText();
@@ -711,7 +720,6 @@ public class GestionAlumno extends javax.swing.JPanel {
         
     } 
 
-    
     private void aparecerBotonEliminar() {
        int filaSeleccionada = jTable1.getSelectedRow();
         
