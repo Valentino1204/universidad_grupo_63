@@ -59,15 +59,19 @@ public class GestionMateria extends javax.swing.JPanel {
         btnActualizarMateria = new javax.swing.JLabel();
         btnLimpiar = new javax.swing.JLabel();
         btnBuscarMateria = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableMaterias = new javax.swing.JTable();
         btnEliminarMateria = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(226, 240, 251));
+        jPanel3.setPreferredSize(new java.awt.Dimension(286, 322));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -79,8 +83,8 @@ public class GestionMateria extends javax.swing.JPanel {
         jLabel5.setForeground(new java.awt.Color(153, 153, 153));
         jLabel5.setText("Año");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 55, 26));
-        jPanel3.add(jTextFieldNombreMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 200, -1));
-        jPanel3.add(jTextFieldAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 200, -1));
+        jPanel3.add(jTextFieldNombreMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 180, -1));
+        jPanel3.add(jTextFieldAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 180, -1));
 
         btnAgregarMateria.setBackground(new java.awt.Color(90, 184, 233));
         btnAgregarMateria.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -99,7 +103,7 @@ public class GestionMateria extends javax.swing.JPanel {
                 btnAgregarMateriaMouseExited(evt);
             }
         });
-        jPanel3.add(btnAgregarMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 130, 30));
+        jPanel3.add(btnAgregarMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 120, 30));
 
         btnActualizarMateria.setBackground(new java.awt.Color(90, 184, 233));
         btnActualizarMateria.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -118,7 +122,7 @@ public class GestionMateria extends javax.swing.JPanel {
                 btnActualizarMateriaMouseExited(evt);
             }
         });
-        jPanel3.add(btnActualizarMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 130, 30));
+        jPanel3.add(btnActualizarMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 120, 30));
 
         btnLimpiar.setBackground(new java.awt.Color(90, 184, 233));
         btnLimpiar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -137,7 +141,7 @@ public class GestionMateria extends javax.swing.JPanel {
                 btnLimpiarMouseExited(evt);
             }
         });
-        jPanel3.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 120, 30));
+        jPanel3.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 120, 30));
 
         btnBuscarMateria.setBackground(new java.awt.Color(90, 184, 233));
         btnBuscarMateria.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -156,9 +160,13 @@ public class GestionMateria extends javax.swing.JPanel {
                 btnBuscarMateriaMouseExited(evt);
             }
         });
-        jPanel3.add(btnBuscarMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 120, 30));
+        jPanel3.add(btnBuscarMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 120, 30));
+        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 250, 10));
+        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 250, 10));
+        jPanel3.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 250, 10));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 318, 308));
+        jLabel1.setText("Datos de la Materia");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, -1));
 
         jPanel4.setBackground(new java.awt.Color(226, 240, 251));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -203,7 +211,26 @@ public class GestionMateria extends javax.swing.JPanel {
         });
         jPanel4.add(btnEliminarMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 100, 30));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 490, 308));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(99, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(94, 94, 94)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(104, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -312,12 +339,16 @@ public class GestionMateria extends javax.swing.JPanel {
     private javax.swing.JLabel btnBuscarMateria;
     private javax.swing.JLabel btnEliminarMateria;
     private javax.swing.JLabel btnLimpiar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTable jTableMaterias;
     private javax.swing.JTextField jTextFieldAnio;
     private javax.swing.JTextField jTextFieldNombreMateria;

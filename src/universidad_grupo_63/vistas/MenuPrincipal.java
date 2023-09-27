@@ -48,17 +48,30 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnGestionMaterias = new javax.swing.JLabel();
         btnGestionAlumnos = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        btnInscripciones = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1080, 610));
-        setResizable(false);
+        setPreferredSize(new java.awt.Dimension(1218, 610));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 170, 228));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         contenido.setBackground(new java.awt.Color(255, 255, 255));
         contenido.setPreferredSize(new java.awt.Dimension(970, 520));
-        contenido.setLayout(new java.awt.BorderLayout());
+
+        javax.swing.GroupLayout contenidoLayout = new javax.swing.GroupLayout(contenido);
+        contenido.setLayout(contenidoLayout);
+        contenidoLayout.setHorizontalGroup(
+            contenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 970, Short.MAX_VALUE)
+        );
+        contenidoLayout.setVerticalGroup(
+            contenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 520, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, -1, -1));
 
         btnHome.setBackground(new java.awt.Color(90, 184, 233));
         btnHome.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -77,6 +90,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 btnHomeMouseExited(evt);
             }
         });
+        jPanel1.add(btnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 250, 50));
 
         btnGestionMaterias.setBackground(new java.awt.Color(90, 184, 233));
         btnGestionMaterias.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -95,6 +109,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 btnGestionMateriasMouseExited(evt);
             }
         });
+        jPanel1.add(btnGestionMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 250, 50));
 
         btnGestionAlumnos.setBackground(new java.awt.Color(90, 184, 233));
         btnGestionAlumnos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -113,38 +128,29 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 btnGestionAlumnosMouseExited(evt);
             }
         });
+        jPanel1.add(btnGestionAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 250, 50));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Logo7060.png"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel4))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGestionAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGestionMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(contenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel4)
-                .addGap(10, 10, 10)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(btnGestionAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(btnGestionMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(contenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
+        btnInscripciones.setBackground(new java.awt.Color(90, 184, 233));
+        btnInscripciones.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnInscripciones.setForeground(new java.awt.Color(255, 255, 255));
+        btnInscripciones.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnInscripciones.setText("INSCRIPCIONES");
+        btnInscripciones.setOpaque(true);
+        btnInscripciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInscripcionesMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnInscripcionesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnInscripcionesMouseExited(evt);
+            }
+        });
+        jPanel1.add(btnInscripciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 250, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1220, 600));
 
@@ -177,7 +183,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         GestionAlumno agregarAlumno = new GestionAlumno();
         agregarAlumno.setSize(WIDTH, HEIGHT);
-        //agregarAlumno.setLocation(0, 0);
+        agregarAlumno.setLocation(0, 0);
         contenido.removeAll();
         contenido.add(agregarAlumno);
         contenido.revalidate();
@@ -188,7 +194,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         GestionMateria gestionMateria = new GestionMateria();
         gestionMateria.setSize(WIDTH, HEIGHT);
-        //gestionMateria.setLocation(0, 0);
+        gestionMateria.setLocation(0, 0);
         contenido.removeAll();
         contenido.add(gestionMateria);
         contenido.revalidate();
@@ -214,6 +220,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         mouseEntered(btnGestionAlumnos);
     }//GEN-LAST:event_btnGestionAlumnosMouseEntered
+
+    private void btnInscripcionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInscripcionesMouseClicked
+        // TODO add your handling code here:
+        Inscripciones inscripciones = new Inscripciones();
+        inscripciones.setSize(WIDTH, HEIGHT);
+        inscripciones.setLocation(0, 0);
+        contenido.removeAll();
+        contenido.add(inscripciones);
+        contenido.revalidate();
+        contenido.repaint();
+    }//GEN-LAST:event_btnInscripcionesMouseClicked
+
+    private void btnInscripcionesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInscripcionesMouseEntered
+        // TODO add your handling code here:
+        mouseEntered(btnInscripciones);
+    }//GEN-LAST:event_btnInscripcionesMouseEntered
+
+    private void btnInscripcionesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInscripcionesMouseExited
+        // TODO add your handling code here:
+        mouseExited(btnInscripciones);
+    }//GEN-LAST:event_btnInscripcionesMouseExited
 
     /**
      * @param args the command line arguments
@@ -255,6 +282,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel btnGestionAlumnos;
     private javax.swing.JLabel btnGestionMaterias;
     private javax.swing.JLabel btnHome;
+    private javax.swing.JLabel btnInscripciones;
     private javax.swing.JPanel contenido;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;

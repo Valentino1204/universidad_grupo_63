@@ -5,6 +5,7 @@
 package universidad_grupo_63.entidades;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -17,6 +18,10 @@ public class Alumno {
     private int dni;
     private LocalDate fechaNacimiento;
     private boolean estadoAlumno;
+    
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    
+    
 
     //Constructor Vacio
     public Alumno() {

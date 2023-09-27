@@ -8,10 +8,14 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.Point;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import universidad_grupo_63.accesoADatos.AlumnoData;
 import universidad_grupo_63.entidades.Alumno;
@@ -33,6 +37,7 @@ public class GestionAlumno extends javax.swing.JPanel {
               return false;  
             }
         };
+    
     
     public GestionAlumno() {
         initComponents();
@@ -70,6 +75,8 @@ public class GestionAlumno extends javax.swing.JPanel {
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -79,7 +86,6 @@ public class GestionAlumno extends javax.swing.JPanel {
         jPanel1.setMaximumSize(new java.awt.Dimension(970, 520));
         jPanel1.setMinimumSize(new java.awt.Dimension(970, 520));
         jPanel1.setSize(new java.awt.Dimension(970, 520));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(226, 240, 251));
 
@@ -95,9 +101,33 @@ public class GestionAlumno extends javax.swing.JPanel {
         jLabel5.setForeground(new java.awt.Color(153, 153, 153));
         jLabel5.setText("Apellido:");
 
+        jTextFieldFechaNacimiento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldFechaNacimientoKeyReleased(evt);
+            }
+        });
+
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(153, 153, 153));
         jLabel6.setText("Fecha de nacimiento:");
+
+        jTextFieldNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldNombreKeyReleased(evt);
+            }
+        });
+
+        jTextFieldApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldApellidoKeyReleased(evt);
+            }
+        });
+
+        jTextFieldDni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldDniKeyReleased(evt);
+            }
+        });
 
         btnAgregarAlumno.setBackground(new java.awt.Color(90, 184, 233));
         btnAgregarAlumno.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -171,6 +201,12 @@ public class GestionAlumno extends javax.swing.JPanel {
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel7.setText("AAAA-mm-DD");
+
+        jLabel1.setText("Datos del Alumno");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -198,7 +234,9 @@ public class GestionAlumno extends javax.swing.JPanel {
                                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                                .addComponent(jLabel6)
+                                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(jLabel6)
+                                                    .addComponent(jLabel7))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(jTextFieldFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -221,13 +259,18 @@ public class GestionAlumno extends javax.swing.JPanel {
                                 .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(87, 87, 87)
-                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(jLabel1)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -250,7 +293,10 @@ public class GestionAlumno extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -261,10 +307,8 @@ public class GestionAlumno extends javax.swing.JPanel {
                         .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addGap(19, 19, 19))
         );
-
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
 
         jPanel4.setBackground(new java.awt.Color(226, 240, 251));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -307,19 +351,38 @@ public class GestionAlumno extends javax.swing.JPanel {
                 btnEliminarMouseExited(evt);
             }
         });
-        jPanel4.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 100, 30));
+        jPanel4.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, 100, 30));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 519, 322));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(77, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(74, 74, 74))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(102, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -355,7 +418,6 @@ public class GestionAlumno extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLimpiarMouseClicked
 
     private void btnLimpiarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseExited
-        // TODO add your handling code here:
         mouseExited(btnLimpiar);
     }//GEN-LAST:event_btnLimpiarMouseExited
 
@@ -364,44 +426,52 @@ public class GestionAlumno extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBuscarMouseClicked
 
     private void btnBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseExited
-        // TODO add your handling code here:
         mouseExited(btnBuscar);
     }//GEN-LAST:event_btnBuscarMouseExited
 
     private void btnLimpiarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseEntered
-        // TODO add your handling code here:
         mouseEntered(btnLimpiar);
     }//GEN-LAST:event_btnLimpiarMouseEntered
 
     private void btnBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseEntered
-        // TODO add your handling code here:
         mouseEntered(btnBuscar);
     }//GEN-LAST:event_btnBuscarMouseEntered
 
     private void btnActualizarAlumnoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarAlumnoMouseEntered
-        // TODO add your handling code here:
         mouseEntered(btnActualizarAlumno);
     }//GEN-LAST:event_btnActualizarAlumnoMouseEntered
 
     private void btnActualizarAlumnoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarAlumnoMouseExited
-        // TODO add your handling code here:
         mouseExited(btnActualizarAlumno);
     }//GEN-LAST:event_btnActualizarAlumnoMouseExited
 
     private void btnAgregarAlumnoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarAlumnoMouseEntered
-        // TODO add your handling code here:
         mouseEntered(btnAgregarAlumno);
     }//GEN-LAST:event_btnAgregarAlumnoMouseEntered
 
     private void btnEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseEntered
-        // TODO add your handling code here:
         btnEliminar.setBackground(Color.red);
     }//GEN-LAST:event_btnEliminarMouseEntered
 
     private void btnEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseExited
-        // TODO add your handling code here:
         btnEliminar.setBackground(Color.decode("#840000"));
     }//GEN-LAST:event_btnEliminarMouseExited
+
+    private void jTextFieldNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreKeyReleased
+        validacionTextField1(jTextFieldNombre);
+    }//GEN-LAST:event_jTextFieldNombreKeyReleased
+
+    private void jTextFieldDniKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDniKeyReleased
+        validacionTextField1(jTextFieldDni);
+    }//GEN-LAST:event_jTextFieldDniKeyReleased
+
+    private void jTextFieldFechaNacimientoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldFechaNacimientoKeyReleased
+        validacionTextField1(jTextFieldFechaNacimiento);
+    }//GEN-LAST:event_jTextFieldFechaNacimientoKeyReleased
+
+    private void jTextFieldApellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldApellidoKeyReleased
+        validacionTextField1(jTextFieldApellido);
+    }//GEN-LAST:event_jTextFieldApellidoKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -410,10 +480,12 @@ public class GestionAlumno extends javax.swing.JPanel {
     private javax.swing.JLabel btnBuscar;
     private javax.swing.JLabel btnEliminar;
     private javax.swing.JLabel btnLimpiar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -430,36 +502,7 @@ public class GestionAlumno extends javax.swing.JPanel {
     private javax.swing.JTextField jTextFieldNombre;
     // End of variables declaration//GEN-END:variables
 
-    public void armarCabecera() {
-        modeloTabla.addColumn("ID");
-        modeloTabla.addColumn("Nombre");
-        modeloTabla.addColumn("Apellido");
-        modeloTabla.addColumn("DNI");
-        modeloTabla.addColumn("Fecha de nacimiento");
-        jTable1.setModel(modeloTabla);
-        jTable1.sizeColumnsToFit(1);
-    }
-
-    public void borrarFilas() {
-        int f = jTable1.getRowCount()-1; // CANTIDAD DE FILAS MENOS UNO
-        for (;f >= 0; f--) {
-            modeloTabla.removeRow(f);
-        }
-    }
-
-    private void cargarTablaAlumnos() {
-        borrarFilas();
-        for (Alumno alumno : alumnoData.listarAlumnos()){
-           modeloTabla.addRow(new Object[] {
-               alumno.getIdAlumno(), 
-               alumno.getNombre(),
-               alumno.getApellido(),
-               alumno.getDni(),
-               alumno.getFechaNacimiento() 
-           });
-        }
-    }
-
+    
     private void eliminacionLogicaAlumno() {
         int filaSeleccionada = jTable1.getSelectedRow();
         if (filaSeleccionada!=-1) { // SI HAY UNA FILA SELECCIONADA ENTRA AL CONDICIONAL
@@ -474,49 +517,137 @@ public class GestionAlumno extends javax.swing.JPanel {
     }
     
     private void cargarTextFields() {
-        //getCellSelectionEnabled()
         int filaSeleccionada = jTable1.getSelectedRow();
         if (filaSeleccionada!=-1) {
             String nombre = (String) jTable1.getValueAt(filaSeleccionada, 1);
             jTextFieldNombre.setText(nombre+"");
+            
             String apellido = (String) jTable1.getValueAt(filaSeleccionada, 2);
             jTextFieldApellido.setText(apellido+"");
+            
             int dni = (Integer) jTable1.getValueAt(filaSeleccionada, 3);
             jTextFieldDni.setText(dni+"");
+            
             String fechaNacimiento = jTable1.getValueAt(filaSeleccionada, 4).toString();
             jTextFieldFechaNacimiento.setText(fechaNacimiento+"");
         }
     }
     
-    private void limpiarTextFields () {
-        
-        jTextFieldNombre.setText("");
-        jTextFieldApellido.setText("");
-        jTextFieldDni.setText("");
-        jTextFieldFechaNacimiento.setText("");
-    }
-
     private void agregarAlumno() {
         Alumno nuevoAlumno = new Alumno(); // CONSTRUCTOR VACÍO
-        nuevoAlumno.setNombre(jTextFieldNombre.getText()); // LE SETEAS EL NOMBRE QUE LO EXTRAES DEL TEXTFIELD
-        nuevoAlumno.setApellido(jTextFieldApellido.getText());
-        nuevoAlumno.setDni(Integer.parseInt(jTextFieldDni.getText()));
-        nuevoAlumno.setFechaNacimiento(LocalDate.parse(jTextFieldFechaNacimiento.getText()));
-        nuevoAlumno.setEstadoAlumno(true);
-        alumnoData.guardarAlumno(nuevoAlumno);
-        limpiarTextFields();
-        cargarTablaAlumnos();
-    }
 
-    private void aparecerBotonEliminar() {
-       int filaSeleccionada = jTable1.getSelectedRow();
-        
-        if (filaSeleccionada!=-1) {
-            btnEliminar.setVisible(true);
-            
-        } 
+        boolean[] alumnoRelleno = {false, false, false, false};
+
+        try {
+            if (validacionTextField1(jTextFieldNombre)) {
+                nuevoAlumno.setNombre(jTextFieldNombre.getText());// LE SETEAS EL NOMBRE QUE LO EXTRAES DEL TEXTFIELD
+                alumnoRelleno[0] = true;
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe ingresar un nombre");
+                alumnoRelleno[0] = false;
+            }
+
+            if (validacionTextField1(jTextFieldApellido)) {
+                nuevoAlumno.setApellido(jTextFieldApellido.getText());
+                alumnoRelleno[1] = true;
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe ingresar un apellido");
+                alumnoRelleno[1] = false;
+            }
+
+            if (validacionTextField1(jTextFieldDni)) {
+                nuevoAlumno.setDni(Integer.parseInt(jTextFieldDni.getText()));
+                alumnoRelleno[2] = true;
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe ingresar un dni");
+                alumnoRelleno[2] = false;
+            }
+
+            if (validacionTextField1(jTextFieldFechaNacimiento)) {
+                nuevoAlumno.setFechaNacimiento(LocalDate.parse(jTextFieldFechaNacimiento.getText()));
+                alumnoRelleno[3] = true;
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe ingresar una fecha de nacimiento");
+                alumnoRelleno[3] = false;
+            }
+
+            nuevoAlumno.setEstadoAlumno(true);
+
+            if (alumnoRelleno[0] == true && alumnoRelleno[1] == true && alumnoRelleno[2] == true && alumnoRelleno[3] == true) {
+                alumnoData.guardarAlumno(nuevoAlumno);
+                limpiarTextFields();
+            }
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese los valores correctamente");
+            validacionTextField1(jTextFieldDni);
+            validacionTextField1(jTextFieldFechaNacimiento);
+            jTextFieldDni.setText("");
+        } catch (DateTimeParseException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese correctamente la fecha");
+            validacionTextField1(jTextFieldDni);
+            validacionTextField1(jTextFieldFechaNacimiento);
+            jTextFieldFechaNacimiento.setText("");
+        } finally {
+            cargarTablaAlumnos();
+        }
     }
     
+    private void actualizarAlumno() {
+       int filaSeleccionada = jTable1.getSelectedRow();
+       boolean[] alumnoRelleno = {false, false, false, false};
+       
+        if (filaSeleccionada != -1) {
+            int idAlumno = (Integer) jTable1.getValueAt(filaSeleccionada, 0);
+            Alumno alumno = alumnoData.buscarAlumno(idAlumno);
+            
+            try {
+                if(validacionTextField1(jTextFieldNombre)){
+                    alumno.setNombre(jTextFieldNombre.getText());
+                    alumnoRelleno[0] = true;
+                }else{
+                    JOptionPane.showMessageDialog(this, "Debe ingresar un nombre");
+                    alumnoRelleno[0] = false;
+                }
+                if(validacionTextField1(jTextFieldApellido)){
+                    alumno.setApellido(jTextFieldApellido.getText());
+                    alumnoRelleno[1] = true;
+                }else {
+                    JOptionPane.showMessageDialog(this, "Debe ingresar un apellido");
+                    alumnoRelleno[1] = false;
+                }
+                if(validacionTextField1(jTextFieldDni)){
+                    alumno.setDni(Integer.parseInt(jTextFieldDni.getText()));
+                    alumnoRelleno[2] = true;
+                }else {
+                    JOptionPane.showMessageDialog(this, "Debe ingresar un dni");
+                    alumnoRelleno[2] = false;
+                }
+                if(validacionTextField1(jTextFieldFechaNacimiento)){
+                    alumno.setFechaNacimiento(LocalDate.parse(jTextFieldFechaNacimiento.getText()));
+                    alumnoRelleno[3] = true;
+                }else {
+                    JOptionPane.showMessageDialog(this, "Debe ingresar una fecha de nacimiento");
+                    alumnoRelleno[3] = false;
+                }
+                
+                if (alumnoRelleno[0] == true && alumnoRelleno[1] == true && alumnoRelleno[2] == true && alumnoRelleno[3] == true) {
+                    alumnoData.modificarAlumno(alumno);
+                    btnActualizarAlumno.setVisible(false);
+                    btnAgregarAlumno.setVisible(true);
+                    limpiarTextFields();
+                    cargarTablaAlumnos();
+                } 
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Ingrese un valor 'DNI' correcto");
+                jTextFieldDni.setText("");    
+            }catch(DateTimeParseException e){
+                JOptionPane.showMessageDialog(this, "Ingrese correctamente la fecha");
+                jTextFieldFechaNacimiento.setText("");  
+            }
+        } 
+    }
+
     private void buscarAlumnoEnTabla() {
         borrarFilas();
         
@@ -580,25 +711,13 @@ public class GestionAlumno extends javax.swing.JPanel {
         
     } 
 
-
-
-    private void actualizarAlumno() {
+    
+    private void aparecerBotonEliminar() {
        int filaSeleccionada = jTable1.getSelectedRow();
         
         if (filaSeleccionada!=-1) {
-          int idAlumno = (Integer) jTable1.getValueAt(filaSeleccionada, 0);
-          Alumno alumno = alumnoData.buscarAlumno(idAlumno);
-          alumno.setNombre(jTextFieldNombre.getText());
-          alumno.setApellido(jTextFieldApellido.getText());
-          alumno.setDni(Integer.parseInt(jTextFieldDni.getText()));
-          alumno.setFechaNacimiento(LocalDate.parse(jTextFieldFechaNacimiento.getText()));
-          alumnoData.modificarAlumno(alumno); 
-        }
-        
-        btnActualizarAlumno.setVisible(false);
-        btnAgregarAlumno.setVisible(true);
-        limpiarTextFields();
-        cargarTablaAlumnos();
+            btnEliminar.setVisible(true);  
+        } 
     }
     
     private void mouseEntered(JLabel btn){
@@ -635,6 +754,52 @@ public class GestionAlumno extends javax.swing.JPanel {
         // Aumentar el tamaño de la etiqueta manteniendo su posición
             btn.setBounds(newX, newY, w - 3, h - 3);
     }
-
     
+    private boolean validacionTextField1(JTextField jtf) {
+        if (jtf.getText().isEmpty()) {
+            jtf.setBorder(BorderFactory.createLineBorder(Color.decode("#aa4356")));
+            return false;
+        } else {
+            jtf.setBorder(null);
+            return true;
+        }
+    }
+    
+    private void limpiarTextFields () {
+        jTextFieldNombre.setText("");
+        jTextFieldApellido.setText("");
+        jTextFieldDni.setText("");
+        jTextFieldFechaNacimiento.setText("");
+    }
+    
+    public void armarCabecera() {
+        modeloTabla.addColumn("ID");
+        modeloTabla.addColumn("Nombre");
+        modeloTabla.addColumn("Apellido");
+        modeloTabla.addColumn("DNI");
+        modeloTabla.addColumn("Fecha de nacimiento");
+        jTable1.setModel(modeloTabla);
+        jTable1.sizeColumnsToFit(1);
+    }
+    
+    private void cargarTablaAlumnos() {
+        borrarFilas();
+        for (Alumno alumno : alumnoData.listarAlumnos()){
+           modeloTabla.addRow(new Object[] {
+               alumno.getIdAlumno(), 
+               alumno.getNombre(),
+               alumno.getApellido(),
+               alumno.getDni(),
+               alumno.getFechaNacimiento() 
+           });
+        }
+    }
+
+    public void borrarFilas() {
+        int f = jTable1.getRowCount()-1; // CANTIDAD DE FILAS MENOS UNO
+        for (;f >= 0; f--) {
+            modeloTabla.removeRow(f);
+        }
+    }
+ 
 }
