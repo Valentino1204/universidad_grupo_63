@@ -6,6 +6,7 @@ package universidad_grupo_63.vistas;
 
 import java.awt.Color;
 import java.awt.Point;
+import java.awt.Toolkit;
 import java.time.LocalDate;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -89,12 +90,18 @@ public class GestionMateria extends javax.swing.JPanel {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextFieldNombreMateriaKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldNombreMateriaKeyTyped(evt);
+            }
         });
         jPanel3.add(jTextFieldNombreMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 180, -1));
 
         jTextFieldAnio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextFieldAnioKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldAnioKeyTyped(evt);
             }
         });
         jPanel3.add(jTextFieldAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 180, -1));
@@ -346,6 +353,24 @@ public class GestionMateria extends javax.swing.JPanel {
         // TODO add your handling code here:
         validacionTextField1(jTextFieldAnio);
     }//GEN-LAST:event_jTextFieldAnioKeyReleased
+
+    private void jTextFieldNombreMateriaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreMateriaKeyTyped
+        char c = evt.getKeyChar();
+            if((c<'a' || c>'z')&&(c<'A' || c>'Z')) evt.consume();
+            if(jTextFieldNombreMateria.getText().length()>=15){
+              evt.consume();
+              Toolkit.getDefaultToolkit().beep();
+           }
+    }//GEN-LAST:event_jTextFieldNombreMateriaKeyTyped
+
+    private void jTextFieldAnioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldAnioKeyTyped
+        char c = evt.getKeyChar();
+           if(c < '0' || c>'9')evt.consume();
+           if(jTextFieldAnio.getText().length()>=1){
+              evt.consume();
+              Toolkit.getDefaultToolkit().beep();
+           }
+    }//GEN-LAST:event_jTextFieldAnioKeyTyped
 
 
     //--------------------------------------------------------------------

@@ -6,6 +6,8 @@ package universidad_grupo_63.vistas;
 
 import java.awt.Color;
 import java.awt.Point;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -29,28 +31,25 @@ public class Inscripciones extends javax.swing.JPanel {
     boolean InscApretado = false;
     boolean noInscApretado = false;
 
-
     /**
      * Creates new form AgregarAlumno
      */
-    
     private DefaultTableModel modeloTablaAlumnos = new DefaultTableModel() {
-            public boolean isCellEditable(int fila, int columna) {
-              return false;  
-            }
-        };
+        public boolean isCellEditable(int fila, int columna) {
+            return false;
+        }
+    };
     private DefaultTableModel modeloTablaMateria = new DefaultTableModel() {
-            public boolean isCellEditable(int fila, int columna) {
-                return columna == 3;
-            }
-        };
-    
+        public boolean isCellEditable(int fila, int columna) {
+            return columna == 3;
+        }
+    };
 
     public Inscripciones() {
         initComponents();
         armarCabeceraMaterias();
         armarCabeceraAlumnos();
-        cargarTablaAlumnos(); 
+        cargarTablaAlumnos();
         btnInscribir.setVisible(false);
         btnAnularInscripcion.setVisible(false);
         btnGuardarNota.setVisible(false);
@@ -216,6 +215,11 @@ public class Inscripciones extends javax.swing.JPanel {
                 jTextFieldNotaActionPerformed(evt);
             }
         });
+        jTextFieldNota.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldNotaKeyTyped(evt);
+            }
+        });
         jPanel3.add(jTextFieldNota, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 90, 30));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 840, 270));
@@ -284,118 +288,118 @@ public class Inscripciones extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInscriptasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInscriptasMouseClicked
-     
+
         InscApretado = true;
         noInscApretado = false;
-        
-        if(InscApretado){
+
+        if (InscApretado) {
             btnInscriptas.setBackground(Color.blue);
             btnNoInscriptas.setBackground(Color.decode("#5AB8E9"));
         }
-        
+
         int filaSeleccionada = jTableAlumnos.getSelectedRow();
-        if (filaSeleccionada!=-1) {
-           cargarTablaMateriasCursadas(extraerIdAlumnoDeTabla()); 
-           btnInscribir.setVisible(false);
-           btnAnularInscripcion.setVisible(true);
-           btnGuardarNota.setVisible(true);
-           jTextFieldNota.setVisible(true);
+        if (filaSeleccionada != -1) {
+            cargarTablaMateriasCursadas(extraerIdAlumnoDeTabla());
+            btnInscribir.setVisible(false);
+            btnAnularInscripcion.setVisible(true);
+            btnGuardarNota.setVisible(true);
+            jTextFieldNota.setVisible(true);
 
         }
-        
+
     }//GEN-LAST:event_btnInscriptasMouseClicked
-    
+
     private void btnNoInscriptasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNoInscriptasMouseClicked
-        
+
         noInscApretado = true;
         InscApretado = false;
-        
-        if(noInscApretado){
+
+        if (noInscApretado) {
             btnNoInscriptas.setBackground(Color.blue);
             btnInscriptas.setBackground(Color.decode("#5AB8E9"));
         }
-        
+
         int filaSeleccionada = jTableAlumnos.getSelectedRow();
-        if (filaSeleccionada!=-1) {
-           cargarTablaMateriasNoCursadas(extraerIdAlumnoDeTabla()); 
-           btnInscribir.setVisible(true);
+        if (filaSeleccionada != -1) {
+            cargarTablaMateriasNoCursadas(extraerIdAlumnoDeTabla());
+            btnInscribir.setVisible(true);
             btnAnularInscripcion.setVisible(false);
             btnGuardarNota.setVisible(false);
             jTextFieldNota.setVisible(false);
         }
-        
+
     }//GEN-LAST:event_btnNoInscriptasMouseClicked
 
     private void jTableAlumnosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAlumnosMouseClicked
         // TODO add your handling code here:
-        if(InscApretado){
+        if (InscApretado) {
             int filaSeleccionada = jTableAlumnos.getSelectedRow();
-            if (filaSeleccionada!=-1) {
-                cargarTablaMateriasCursadas(extraerIdAlumnoDeTabla()); 
+            if (filaSeleccionada != -1) {
+                cargarTablaMateriasCursadas(extraerIdAlumnoDeTabla());
                 btnInscribir.setVisible(false);
                 btnAnularInscripcion.setVisible(true);
             }
-        }else if(noInscApretado){
+        } else if (noInscApretado) {
             int filaSeleccionada = jTableAlumnos.getSelectedRow();
-            if (filaSeleccionada!=-1) {
-                cargarTablaMateriasNoCursadas(extraerIdAlumnoDeTabla()); 
+            if (filaSeleccionada != -1) {
+                cargarTablaMateriasNoCursadas(extraerIdAlumnoDeTabla());
                 btnInscribir.setVisible(true);
                 btnAnularInscripcion.setVisible(false);
             }
         }
     }//GEN-LAST:event_jTableAlumnosMouseClicked
- 
+
     private void btnNoInscriptasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNoInscriptasMouseEntered
-        
-        if(InscApretado){
+
+        if (InscApretado) {
             mouseEntered(btnNoInscriptas);
         }
-        
+
     }//GEN-LAST:event_btnNoInscriptasMouseEntered
 
     private void btnNoInscriptasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNoInscriptasMouseExited
-        if(InscApretado){
-        mouseExited(btnNoInscriptas);
-        } 
+        if (InscApretado) {
+            mouseExited(btnNoInscriptas);
+        }
     }//GEN-LAST:event_btnNoInscriptasMouseExited
 
     private void btnInscriptasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInscriptasMouseEntered
-        if(noInscApretado){
-        mouseEntered(btnInscriptas);
+        if (noInscApretado) {
+            mouseEntered(btnInscriptas);
         }
     }//GEN-LAST:event_btnInscriptasMouseEntered
 
     private void btnInscriptasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInscriptasMouseExited
-        if(noInscApretado){
-        mouseExited(btnInscriptas);
+        if (noInscApretado) {
+            mouseExited(btnInscriptas);
         }
     }//GEN-LAST:event_btnInscriptasMouseExited
 
     private void jTableMateriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMateriasMouseClicked
         int filaSeleccionada = jTableMaterias.getSelectedRow();
-        if (filaSeleccionada!=-1) {
-            jTextFieldNota.setText(String.valueOf(jTableMaterias.getValueAt(filaSeleccionada,3)));
+        if (filaSeleccionada != -1) {
+            jTextFieldNota.setText(String.valueOf(jTableMaterias.getValueAt(filaSeleccionada, 3)));
         }
     }//GEN-LAST:event_jTableMateriasMouseClicked
 
     private void jTableMateriasPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTableMateriasPropertyChange
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jTableMateriasPropertyChange
 
     private void btnInscribirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInscribirMouseClicked
         int filaSeleccionada = jTableMaterias.getSelectedRow();
-        
-        if (filaSeleccionada!=-1){
+
+        if (filaSeleccionada != -1) {
             Inscripcion inscripcion = new Inscripcion();
             inscripcion.setAlumno(alumnoData.buscarAlumno(extraerIdAlumnoDeTabla()));
             inscripcion.setMateria(materiaData.buscarMateriaNombre(extraerNombreMateriaDeTabla()));
             inscripcionData.guardarInscripcion(inscripcion);
-        }else{
-            JOptionPane.showMessageDialog(this,"Debe seleccionar una Materia");
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una Materia");
         }
-        
-        cargarTablaMateriasNoCursadas(extraerIdAlumnoDeTabla()); 
+
+        cargarTablaMateriasNoCursadas(extraerIdAlumnoDeTabla());
     }//GEN-LAST:event_btnInscribirMouseClicked
 
     private void btnInscribirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInscribirMouseEntered
@@ -408,13 +412,13 @@ public class Inscripciones extends javax.swing.JPanel {
 
     private void btnAnularInscripcionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnularInscripcionMouseClicked
         int filaSeleccionada = jTableMaterias.getSelectedRow();
-        
-        if (filaSeleccionada!=-1) {
+
+        if (filaSeleccionada != -1) {
             eliminarInscripcion(extraerIdInscripcionDeTabla());
-            cargarTablaMateriasCursadas(extraerIdAlumnoDeTabla()); 
+            cargarTablaMateriasCursadas(extraerIdAlumnoDeTabla());
             btnAnularInscripcion.setVisible(false);
-        } else{
-            JOptionPane.showMessageDialog(this,"Debe seleccionar una Materia");
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una Materia");
         }
     }//GEN-LAST:event_btnAnularInscripcionMouseClicked
 
@@ -427,18 +431,18 @@ public class Inscripciones extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAnularInscripcionMouseExited
 
     private void btnGuardarNotaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarNotaMouseClicked
-        try{
+        try {
             int filaSeleccionada = jTableMaterias.getSelectedRow();
-            if (filaSeleccionada!=-1) {
+            if (filaSeleccionada != -1) {
                 inscripcionData.actualizarNota((Integer) jTableMaterias.getValueAt(filaSeleccionada, 0), Integer.parseInt(jTextFieldNota.getText()));
                 jTextFieldNota.setText("");
-                cargarTablaMateriasCursadas(extraerIdAlumnoDeTabla()); 
+                cargarTablaMateriasCursadas(extraerIdAlumnoDeTabla());
             }
-        }catch(NumberFormatException e){
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Ingrese un valor 'Nota' correcto");
             jTextFieldNota.setText("");
         }
-        
+
     }//GEN-LAST:event_btnGuardarNotaMouseClicked
 
     private void btnGuardarNotaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarNotaMouseEntered
@@ -452,6 +456,12 @@ public class Inscripciones extends javax.swing.JPanel {
     private void jTextFieldNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNotaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldNotaActionPerformed
+
+    private void jTextFieldNotaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNotaKeyTyped
+
+
+       
+    }//GEN-LAST:event_jTextFieldNotaKeyTyped
 
     //------------------------------------------------------------------------------------------------
 
@@ -479,8 +489,7 @@ public class Inscripciones extends javax.swing.JPanel {
         modeloTablaMateria.addColumn("Nota");
         jTableMaterias.setModel(modeloTablaMateria);
     }
-    
-    
+
     public void armarCabeceraAlumnos() {
         modeloTablaAlumnos.addColumn("ID");
         modeloTablaAlumnos.addColumn("Nombre");
@@ -488,130 +497,125 @@ public class Inscripciones extends javax.swing.JPanel {
         modeloTablaAlumnos.addColumn("DNI");
         jTableAlumnos.setModel(modeloTablaAlumnos);
     }
-    
 
     public void borrarFilasMateria() {
-        int f = jTableMaterias.getRowCount()-1; // CANTIDAD DE FILAS MENOS UNO
-        for (;f >= 0; f--) {
+        int f = jTableMaterias.getRowCount() - 1; // CANTIDAD DE FILAS MENOS UNO
+        for (; f >= 0; f--) {
             modeloTablaMateria.removeRow(f);
         }
     }
-    
+
     public void borrarFilasAlumno() {
-        int f = jTableAlumnos.getRowCount()-1; // CANTIDAD DE FILAS MENOS UNO
-        for (;f >= 0; f--) {
+        int f = jTableAlumnos.getRowCount() - 1; // CANTIDAD DE FILAS MENOS UNO
+        for (; f >= 0; f--) {
             modeloTablaAlumnos.removeRow(f);
         }
     }
 
-    private void cargarTablaMateriasCursadas(int idAlumno){
+    private void cargarTablaMateriasCursadas(int idAlumno) {
         borrarFilasMateria();
-        for(Inscripcion inscripcion : inscripcionData.obtenerInscripcionesPorAlumno(idAlumno)){
-            modeloTablaMateria.addRow(new Object[] {
-               inscripcion.getIdInscripcion(),
-               inscripcion.getMateria().getNombreMateria(), 
-               inscripcion.getMateria().getAnio(),
-               inscripcion.getNota()});
+        for (Inscripcion inscripcion : inscripcionData.obtenerInscripcionesPorAlumno(idAlumno)) {
+            modeloTablaMateria.addRow(new Object[]{
+                inscripcion.getIdInscripcion(),
+                inscripcion.getMateria().getNombreMateria(),
+                inscripcion.getMateria().getAnio(),
+                inscripcion.getNota()});
         }
     }
-    
+
     private void cargarTablaMateriasNoCursadas(int idAlumno) {
         borrarFilasMateria();
-        for (Materia materia : inscripcionData.obtenerMateriasNoCursadas(idAlumno)){
-           modeloTablaMateria.addRow(new Object[] {
-               null,
-               materia.getNombreMateria(), 
-               materia.getAnio(),
-               null
-               });
+        for (Materia materia : inscripcionData.obtenerMateriasNoCursadas(idAlumno)) {
+            modeloTablaMateria.addRow(new Object[]{
+                null,
+                materia.getNombreMateria(),
+                materia.getAnio(),
+                null
+            });
         }
     }
-    
+
     private void cargarTablaAlumnos() {
         borrarFilasAlumno();
-        for (Alumno alumno : alumnoData.listarAlumnos()){
-           modeloTablaAlumnos.addRow(new Object[] {
-               alumno.getIdAlumno(), 
-               alumno.getNombre(), 
-               alumno.getApellido(),
-               alumno.getDni()});
+        for (Alumno alumno : alumnoData.listarAlumnos()) {
+            modeloTablaAlumnos.addRow(new Object[]{
+                alumno.getIdAlumno(),
+                alumno.getNombre(),
+                alumno.getApellido(),
+                alumno.getDni()});
         }
     }
-    
+
     private void eliminarInscripcion(int idInscripcion) {
         int filaSeleccionada = jTableMaterias.getSelectedRow();
-        if (filaSeleccionada!=-1) {
+        if (filaSeleccionada != -1) {
             idInscripcion = (Integer) jTableMaterias.getValueAt(filaSeleccionada, 0);
             inscripcionData.borrarInscripcionMateriaAlumno(idInscripcion);
         } else {
             JOptionPane.showMessageDialog(this, "Debe seleccionar una fila");
         }
     }
-    
-    public int extraerIdAlumnoDeTabla(){
+
+    public int extraerIdAlumnoDeTabla() {
         int filaSeleccionada = jTableAlumnos.getSelectedRow();
         int idAlumno = 0;
-        if (filaSeleccionada!=-1) {
+        if (filaSeleccionada != -1) {
             idAlumno = (Integer) jTableAlumnos.getValueAt(filaSeleccionada, 0);
         }
         return idAlumno;
     }
-    
-    public int extraerIdInscripcionDeTabla(){
+
+    public int extraerIdInscripcionDeTabla() {
         int filaSeleccionada = jTableMaterias.getSelectedRow();
         int idInscripcion = 0;
-        if (filaSeleccionada!=-1) {
+        if (filaSeleccionada != -1) {
             idInscripcion = (Integer) jTableMaterias.getValueAt(filaSeleccionada, 0);
         }
         return idInscripcion;
     }
-    
-    public String extraerNombreMateriaDeTabla(){
+
+    public String extraerNombreMateriaDeTabla() {
         int filaSeleccionada = jTableMaterias.getSelectedRow();
         String nombreMateria = null;
-        if (filaSeleccionada!=-1) {
+        if (filaSeleccionada != -1) {
             nombreMateria = jTableMaterias.getValueAt(filaSeleccionada, 1).toString();
         }
         return nombreMateria;
     }
-    
-    
+
     //------------------- Animacion botones celestes -----------------------
-    
-    private void mouseEntered(JLabel btn){
+    private void mouseEntered(JLabel btn) {
         btn.setBackground(Color.decode("#0096ce"));
-        
+
         Point location = btn.getLocation(); // Obtener la posición actual de la etiqueta
-        
+
         int w = btn.getWidth();
         int h = btn.getHeight();
-        
-        
+
         // Calcular las nuevas coordenadas para mantener la etiqueta centrada
         int newX = location.x - 1;
         int newY = location.y - 1;
 
         // Aumentar el tamaño de la etiqueta manteniendo su posición
         btn.setBounds(newX, newY, w + 3, h + 3);
-        
+
     }
-    
-    private void mouseExited(JLabel btn){
+
+    private void mouseExited(JLabel btn) {
         btn.setBackground(Color.decode("#5AB8E9"));
-        
+
         int w = btn.getWidth();
         int h = btn.getHeight();
-  
+
         // Obtener la posición actual de la etiqueta
-            Point location = btn.getLocation();
+        Point location = btn.getLocation();
 
         // Calcular las nuevas coordenadas para mantener la etiqueta centrada
-            int newX = location.x + 1;
-            int newY = location.y + 1;
+        int newX = location.x + 1;
+        int newY = location.y + 1;
 
         // Aumentar el tamaño de la etiqueta manteniendo su posición
-            btn.setBounds(newX, newY, w - 3, h - 3);
+        btn.setBounds(newX, newY, w - 3, h - 3);
     }
 
-    
 }

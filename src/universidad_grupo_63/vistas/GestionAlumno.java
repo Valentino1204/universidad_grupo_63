@@ -6,6 +6,7 @@ package universidad_grupo_63.vistas;
 
 import java.awt.Color;
 import java.awt.Point;
+import java.awt.Toolkit;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import javax.swing.BorderFactory;
@@ -81,7 +82,6 @@ public class GestionAlumno extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMaximumSize(new java.awt.Dimension(970, 520));
         jPanel1.setMinimumSize(new java.awt.Dimension(970, 520));
-        jPanel1.setSize(new java.awt.Dimension(970, 520));
 
         jPanel3.setBackground(new java.awt.Color(226, 240, 251));
 
@@ -111,17 +111,26 @@ public class GestionAlumno extends javax.swing.JPanel {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextFieldNombreKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldNombreKeyTyped(evt);
+            }
         });
 
         jTextFieldApellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextFieldApellidoKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldApellidoKeyTyped(evt);
+            }
         });
 
         jTextFieldDni.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextFieldDniKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldDniKeyTyped(evt);
             }
         });
 
@@ -473,6 +482,33 @@ public class GestionAlumno extends javax.swing.JPanel {
     private void jTextFieldApellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldApellidoKeyReleased
         validacionTextField1(jTextFieldApellido);
     }//GEN-LAST:event_jTextFieldApellidoKeyReleased
+
+    private void jTextFieldNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreKeyTyped
+        char c = evt.getKeyChar();
+            if((c<'a' || c>'z')&&(c<'A' || c>'Z')) evt.consume();
+            if(jTextFieldNombre.getText().length()>=15){
+              evt.consume();
+              Toolkit.getDefaultToolkit().beep();
+           }
+    }//GEN-LAST:event_jTextFieldNombreKeyTyped
+
+    private void jTextFieldApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldApellidoKeyTyped
+        char c = evt.getKeyChar();
+            if((c<'a' || c>'z')&&(c<'A' || c>'Z')) evt.consume();
+            if(jTextFieldApellido.getText().length()>=15){
+              evt.consume();
+              Toolkit.getDefaultToolkit().beep();
+           }
+    }//GEN-LAST:event_jTextFieldApellidoKeyTyped
+
+    private void jTextFieldDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDniKeyTyped
+         char c = evt.getKeyChar();
+           if(c < '0' || c>'9')evt.consume();
+           if(jTextFieldDni.getText().length()>=8){
+              evt.consume();
+              Toolkit.getDefaultToolkit().beep();
+           }
+    }//GEN-LAST:event_jTextFieldDniKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
